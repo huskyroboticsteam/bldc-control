@@ -27,7 +27,7 @@ void setup( ) {
 
 TCA0.SINGLE.CTRLA = 0b00000011;  // All PWM to 32 kHz (ATMega4809 specific SFR)
 
-  pinMode(AL_PIN, OUTPUT);
+  pinMode(AL_PIN, OUTPUT); 
   pinMode(AH_PIN, OUTPUT);
   pinMode(BL_PIN, OUTPUT);
   pinMode(BH_PIN, OUTPUT);
@@ -50,7 +50,7 @@ void loop( ) {
 
     uint16_t setpoint = analogRead(VREF_PIN);
 
-    uint8_t D = setpoint >> 2;
+    uint8_t D = setpoint >> 2; //D controls speed using PWM
     if (D > MAX_PWM_VAL) {
       D = MAX_PWM_VAL;
     }
@@ -73,44 +73,45 @@ void loop( ) {
       last_hall = hall;
       last_D = D;
 
-      switch (hall) {
+      switch (hall) { //A is U in diagram, B is W, C is V,
+        // this going backwards of normal cycle but will still work 
 
-        case 0b001:
+        case 0b001: //D voltage sent to motor A, C open receieves -V
           digitalWrite(AL_PIN, LOW);
           digitalWrite(BL_PIN, LOW);
           digitalWrite(CL_PIN, HIGH);
           analogWrite(AH_PIN, D);
           break;
 
-        case 0b011:
+        case 0b011: //D voltage sent to motor B, C open receieves -V
           digitalWrite(AL_PIN, LOW);
           digitalWrite(BL_PIN, LOW);
           digitalWrite(CL_PIN, HIGH);
           analogWrite(BH_PIN, D);
           break;
 
-        case 0b010:
+        case 0b010: //D voltage sent to motor B, A open receieves -V
           digitalWrite(BL_PIN, LOW);
           digitalWrite(CL_PIN, LOW);
           digitalWrite(AL_PIN, HIGH);
           analogWrite(BH_PIN, D);
           break;
 
-        case 0b110:
+        case 0b110: //D voltage sent to motor C, A open receieves -V
           digitalWrite(BL_PIN, LOW);
           digitalWrite(CL_PIN, LOW);
           digitalWrite(AL_PIN, HIGH);
           analogWrite(CH_PIN, D);
           break;
 
-        case 0b100:
+        case 0b100: //D voltage sent to motor C, B open receieves -V
           digitalWrite(AL_PIN, LOW);
           digitalWrite(CL_PIN, LOW);
           digitalWrite(BL_PIN, HIGH);
           analogWrite(CH_PIN, D);
           break;
 
-        case 0b101:
+        case 0b101: //D voltage sent to motor A, B open receieves -V
           digitalWrite(AL_PIN, LOW);
           digitalWrite(CL_PIN, LOW);
           digitalWrite(BL_PIN, HIGH);
