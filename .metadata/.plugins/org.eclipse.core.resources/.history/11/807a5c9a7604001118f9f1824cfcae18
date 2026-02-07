@@ -95,115 +95,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  /* USER CODE END 2 */
-//array for hall sensor cases
-
-
-  uint8_t rotorStates[6] = {0b001001,
-                            0b011000,
-                            0b010010,
-                            0b000110,
-                            0b100100,
-                            0b100001};
-  int i = 0;
-  /*
-  HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // CN10 - 11 (6 down on right side of left)
-  HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // CN10 - 15
-  HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET); // CN10 - 26
-  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);// CN10 - 30
-  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET); // CN10 - 13
-  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET); //CN10 - 28
-  */
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-
   while (1)
   {
+    /* USER CODE END WHILE */
 
-
-	  //pwm simulation (change to actual pwm later)
-	  while (CH1_DC < 21250){
-		  TIM2->CCR1 = CH1_DC;
-		  CH1_DC += 70;
-		  HAL_Delay(1);
-	  }
-	  while(CH1_DC > 0){
-		  TIM2 -> CCR1 = CH1_DC;
-		  CH1_DC -= 70;
-		  HAL_Delay(1);
-	  }
-
-
-	  uint8_t hall = rotorStates[i];
-
-	  //reset all
-	  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_RESET);
-
-      switch(hall){
-      	  case 0b001001:
-      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
-
-      		HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-      		break;
-
-      	  case 0b011000:
-      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
-
-      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
-
-      	  case 0b010010:
-      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
-
-      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
-      	  case 0b000110:
-			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
-
-			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
-
-      	  case 0b100100:
-			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
-
-			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
-
-      	  case 0b100001:
-			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
-
-			HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-			break;
-        }
-	  //coil states
-      HAL_Delay(100);
-
-      //printf("The number is: %d\n", i);
-      i++;
-
-      if(i >= 6){
-    	  i = 0;
-      }
-
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
 }
-
-}
-
 
 /**
   * @brief System Clock Configuration

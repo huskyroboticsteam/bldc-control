@@ -149,7 +149,6 @@ int main(void)
       		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
 
       		HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-      		break;
 
       	  case 0b011000:
       		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
@@ -157,7 +156,6 @@ int main(void)
       		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
 
       		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
 
       	  case 0b010010:
       		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
@@ -165,14 +163,12 @@ int main(void)
       		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
 
       		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
       	  case 0b000110:
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
 
 			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
 
       	  case 0b100100:
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
@@ -180,7 +176,6 @@ int main(void)
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
 
 			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
 
       	  case 0b100001:
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
@@ -188,12 +183,11 @@ int main(void)
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
 
 			HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-			break;
         }
 	  //coil states
       HAL_Delay(100);
 
-      //printf("The number is: %d\n", i);
+      printf("The number is: %d\n", i);
       i++;
 
       if(i >= 6){

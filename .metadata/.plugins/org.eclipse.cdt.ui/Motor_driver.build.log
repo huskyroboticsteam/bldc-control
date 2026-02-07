@@ -1,27 +1,10 @@
-14:06:04 **** Incremental Build of configuration Debug for project Motor_driver ****
+14:56:06 **** Incremental Build of configuration Debug for project Motor_driver ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:125:7: warning: unused variable 'i' [-Wunused-variable]
-  125 |   int i = 0;
-      |       ^
-../Core/Src/main.c:119:11: warning: unused variable 'rotorStates' [-Wunused-variable]
-  119 |   uint8_t rotorStates[6] = {0b001001,
-      |           ^~~~~~~~~~~
-../Core/Src/main.c:93:11: warning: unused variable 'CH1_DC' [-Wunused-variable]
-   93 |   int32_t CH1_DC = 0;
-      |           ^~~~~~
-arm-none-eabi-gcc -o "Motor_driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Motor_driver\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Motor_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Motor_driver.elf
- 
 arm-none-eabi-size  Motor_driver.elf 
-arm-none-eabi-objdump -h -S Motor_driver.elf  > "Motor_driver.list"
    text	   data	    bss	    dec	    hex	filename
-  10960	     12	   1644	  12616	   3148	Motor_driver.elf
+  11504	     12	   1644	  13160	   3368	Motor_driver.elf
 Finished building: default.size.stdout
  
-Finished building: Motor_driver.list
- 
 
-14:06:06 Build Finished. 0 errors, 3 warnings. (took 1s.476ms)
+14:56:06 Build Finished. 0 errors, 0 warnings. (took 403ms)
 

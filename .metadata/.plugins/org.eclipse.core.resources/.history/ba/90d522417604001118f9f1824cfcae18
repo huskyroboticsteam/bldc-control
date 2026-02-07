@@ -107,17 +107,15 @@ int main(void)
                             0b100100,
                             0b100001};
   int i = 0;
-  /*
   HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // CN10 - 11 (6 down on right side of left)
   HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // CN10 - 15
-  HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET); // CN10 - 26
-  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);// CN10 - 30
+  HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET);
   HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET); // CN10 - 13
-  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET); //CN10 - 28
-  */
+  HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+/*
   while (1)
   {
 
@@ -138,62 +136,55 @@ int main(void)
 	  uint8_t hall = rotorStates[i];
 
 	  //reset all
-	  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_RESET);
-	  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_RESET);
 
       switch(hall){
       	  case 0b001001:
       		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
       		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
 
-      		HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-      		break;
+      		HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET);
 
       	  case 0b011000:
       		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
       		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
 
       		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
 
       	  case 0b010010:
       		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
       		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
 
       		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
-      		break;
       	  case 0b000110:
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
 
-			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
+			HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
 
       	  case 0b100100:
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
 
-			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
-			break;
+			HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
 
       	  case 0b100001:
 			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
 
-			HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
-			break;
+			HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET);
         }
 	  //coil states
-      HAL_Delay(100);
+      HAL_Delay(10000);
 
-      //printf("The number is: %d\n", i);
       i++;
 
       if(i >= 6){
@@ -201,9 +192,8 @@ int main(void)
       }
 
 }
-
+*/
 }
-
 
 /**
   * @brief System Clock Configuration
@@ -330,7 +320,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, A_Low_Pin|B_High_Pin|B_Low_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, A_High_Pin|C_High_Pin|C_Low_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, C_High_Pin|C_Low_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : A_High_Pin */
+  GPIO_InitStruct.Pin = A_High_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(A_High_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : A_Low_Pin B_High_Pin B_Low_Pin */
   GPIO_InitStruct.Pin = A_Low_Pin|B_High_Pin|B_Low_Pin;
@@ -339,8 +335,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : A_High_Pin C_High_Pin C_Low_Pin */
-  GPIO_InitStruct.Pin = A_High_Pin|C_High_Pin|C_Low_Pin;
+  /*Configure GPIO pins : C_High_Pin C_Low_Pin */
+  GPIO_InitStruct.Pin = C_High_Pin|C_Low_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
