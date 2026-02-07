@@ -90,20 +90,126 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  int32_t CH1_DC = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
-  uint8_t hall = 0x00;
   /* USER CODE BEGIN WHILE */
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  /* USER CODE END 2 */
+//array for hall sensor cases
+
+  struct CoilState
+  {
+      uint8_t UH : 1;
+      uint8_t UL : 1;
+      uint8_t VH : 1;
+      uint8_t VL : 1;
+      uint8_t WH : 1;
+      uint8_t WL : 1;
+  };
+
+  struct HallState
+  {
+      uint8_t A : 1;
+      uint8_t B : 1;
+      uint8_t C : 1;
+  };
+
+  uint8_t rotorStates[6] = {0b001001,
+                            0b011000,
+                            0b010010,
+                            0b000110,
+                            0b100100,
+                            0b100001};
+  int i = 0;
+  HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // CN10 - 11 (6 down on right side of left)
+  HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // CN10 - 15
+  HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET); // CN7 - 14
+  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET); // CN10 - 13
+  HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+/*
   while (1)
   {
-    /* USER CODE END WHILE */
 
 
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+	  //pwm simulation (change to actual pwm later)
+	  while (CH1_DC < 21250){
+		  TIM2->CCR1 = CH1_DC;
+		  CH1_DC += 70;
+		  HAL_Delay(1);
+	  }
+	  while(CH1_DC > 0){
+		  TIM2 -> CCR1 = CH1_DC;
+		  CH1_DC -= 70;
+		  HAL_Delay(1);
+	  }
+
+
+	  uint8_t hall = rotorStates[i];
+
+	  //reset all
+	  HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_RESET);
+
+      switch(hall){
+      	  case 0b001001:
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET);
+
+      	  case 0b011000:
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
+
+      	  case 0b010010:
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
+      	  case 0b000110:
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
+
+      	  case 0b100100:
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOA, C_High_Pin, GPIO_PIN_SET);
+
+      	  case 0b100001:
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOA, A_High_Pin, GPIO_PIN_SET);
+        }
+	  //coil states
+      HAL_Delay(10000);
+
+      i++;
+
+      if(i >= 6){
+    	  i = 0;
+      }
+
+}
+*/
+
 }
 
 /**
@@ -164,6 +270,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 0 */
 
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
@@ -176,6 +283,15 @@ static void MX_TIM2_Init(void)
   htim2.Init.Period = 42499;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
   {
     Error_Handler();

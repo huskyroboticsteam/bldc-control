@@ -60,8 +60,8 @@ all: main-build
 main-build: pwm_try_pls.elf secondary-outputs
 
 # Tool invocations
-pwm_try_pls.elf pwm_try_pls.map: $(OBJS) $(USER_OBJS) C:\Users\becca\Documents\STM32\pwm_try_pls\STM32G474RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "pwm_try_pls.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\becca\Documents\STM32\pwm_try_pls\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pwm_try_pls.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+pwm_try_pls.elf pwm_try_pls.map: $(OBJS) $(USER_OBJS) C:\Users\becca\Documents\GitHub\bldc-control\pwm_try_pls\STM32G474RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "pwm_try_pls.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\pwm_try_pls\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pwm_try_pls.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
