@@ -508,3 +508,11 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\becca\Documen
 
 !ENTRY org.eclipse.cdt.core 1 0 2026-02-19 18:52:59.038
 !MESSAGE Indexed 'CAN_Draft' (20 sources, 112 headers) in 5.05 sec: 10,502 declarations; 42,946 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.32%)
+
+!ENTRY org.eclipse.ui.ide 4 4 2026-02-19 19:01:23.885
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2026-02-19 19:01:23.895
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-02-19 19:01:23.895
+!MESSAGE The project description file (.project) for 'CAN_Draft' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
