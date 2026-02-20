@@ -1,21 +1,14 @@
-14:55:49 **** Incremental Build of configuration Debug for project Motor_driver ****
+19:45:01 **** Incremental Build of configuration Debug for project Motor_driver ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Driver_Code/phases.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/phases.d" -MT"Driver_Code/phases.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/phases.o"
 arm-none-eabi-gcc -o "Motor_driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Motor_driver\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Motor_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Motor_driver.elf
  
 arm-none-eabi-size  Motor_driver.elf 
 arm-none-eabi-objdump -h -S Motor_driver.elf  > "Motor_driver.list"
    text	   data	    bss	    dec	    hex	filename
-  11504	     12	   1644	  13160	   3368	Motor_driver.elf
+  12608	     12	   1748	  14368	   3820	Motor_driver.elf
 Finished building: default.size.stdout
  
 Finished building: Motor_driver.list
- 
-14:56:06 **** Incremental Build of configuration Debug for project Motor_driver ****
-make -j12 all 
-arm-none-eabi-size  Motor_driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-  11504	     12	   1644	  13160	   3368	Motor_driver.elf
-Finished building: default.size.stdout
  

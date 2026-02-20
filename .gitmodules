@@ -1,0 +1,3 @@
+[submodule "Motor_driver/CAN26"]
+	path = Motor_driver/CAN26
+	url = https://github.com/huskyroboticsteam/CAN26.git

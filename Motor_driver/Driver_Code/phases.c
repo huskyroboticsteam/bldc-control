@@ -1,0 +1,141 @@
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* Includes ------------------------------------------------------------------*/
+#include "main.h"
+
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int phases(void)
+{
+
+
+  uint8_t rotorStates[6] = {0b001001,
+                            0b011000,
+                            0b010010,
+                            0b000110,
+                            0b100100,
+                            0b100001};
+  int i = 0;
+  int32_t CH1_DC = 0;
+  /*
+  HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // CN10 - 11 (6 down on right side of left)
+  HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // CN10 - 15
+  HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET); // CN10 - 26
+  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);// CN10 - 30
+  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET); // CN10 - 13
+  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET); //CN10 - 28
+  */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+
+  while (1)
+  {
+
+
+	  //pwm simulation (change to actual pwm later)
+	  while (CH1_DC < 21250){
+		  TIM2->CCR1 = CH1_DC;
+		  CH1_DC += 70;
+		  HAL_Delay(1);
+	  }
+	  while(CH1_DC > 0){
+		  TIM2 -> CCR1 = CH1_DC;
+		  CH1_DC -= 70;
+		  HAL_Delay(1);
+	  }
+
+
+	  uint8_t hall = rotorStates[i];
+
+	  //reset all
+	  HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_RESET);
+
+      switch(hall){
+      	  case 0b001001:
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
+      		break;
+
+      	  case 0b011000:
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
+      		break;
+
+      	  case 0b010010:
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
+
+      		HAL_GPIO_WritePin(GPIOA, B_High_Pin, GPIO_PIN_SET);
+      		break;
+      	  case 0b000110:
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
+			break;
+
+      	  case 0b100100:
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOB, C_High_Pin, GPIO_PIN_SET);
+			break;
+
+      	  case 0b100001:
+			HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOB, A_High_Pin, GPIO_PIN_SET);
+			break;
+        }
+	  //coil states
+      HAL_Delay(100);
+
+      //printf("The number is: %d\n", i);
+      i++;
+
+      if(i >= 6){
+    	  i = 0;
+      }
+
+  }
+
+}
