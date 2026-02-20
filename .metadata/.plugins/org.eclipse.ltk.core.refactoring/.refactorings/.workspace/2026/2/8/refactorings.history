@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;CAN_Draft/CAN&apos;" deleteContents="false" description="Delete resource &apos;CAN_Draft/CAN&apos;" element1="/CAN_Draft/CAN" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1771556026924"/>
+</session>

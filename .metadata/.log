@@ -453,3 +453,58 @@ COM6
 
 !ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-07 14:57:27.861
 !MESSAGE port: 
+!SESSION 2026-02-17 19:54:51.205 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  C:\Users\becca\Documents\GitHub\bldc-control\CAN_Draft\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\becca\Documents\GitHub\bldc-control\CAN_Draft\.project
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-02-17 19:54:58.611
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-02-17 19:55:04.982
+!MESSAGE Log4j2 initialized with config file C:\Users\becca\Documents\GitHub\bldc-control\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-02-17 19:55:16.412
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-02-17 19:55:23.711
+!MESSAGE Indexed 'CAN_Draft' (24 sources, 141 headers) in 6.79 sec: 12,676 declarations; 45,410 references; 7 unresolved inclusions; 78 syntax errors; 1,392 unresolved names (2.3%)
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-17 19:55:24.222
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-17 19:55:24.224
+!MESSAGE port: 
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-02-17 20:10:40.557
+!MESSAGE Indexed 'CAN_Draft' (20 sources, 112 headers) in 2.85 sec: 10,502 declarations; 42,946 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.32%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-02-17 20:10:57.274
+!MESSAGE Indexed 'CAN_Draft' (20 sources, 112 headers) in 2.25 sec: 10,502 declarations; 42,946 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.32%)
+!SESSION 2026-02-19 18:52:30.248 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  C:\Users\becca\Documents\GitHub\bldc-control\CAN_Draft\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\becca\Documents\GitHub\bldc-control\CAN_Draft\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-02-19 18:52:40.612
+!MESSAGE Log4j2 initialized with config file C:\Users\becca\Documents\GitHub\bldc-control\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-02-19 18:52:53.821
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-19 18:52:57.774
+!MESSAGE Executed PowerShell command powershell.exe -Command "Get-CimInstance -ClassName Win32_SerialPort | Select-Object -ExpandProperty DeviceID":
+
+
+!ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-02-19 18:52:57.777
+!MESSAGE port: 
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-02-19 18:52:59.038
+!MESSAGE Indexed 'CAN_Draft' (20 sources, 112 headers) in 5.05 sec: 10,502 declarations; 42,946 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.32%)
