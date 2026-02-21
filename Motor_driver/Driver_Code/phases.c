@@ -17,6 +17,7 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "phases.h"
 
 /* USER CODE BEGIN PFP */
 

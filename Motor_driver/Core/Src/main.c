@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "phases.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -94,7 +95,6 @@ int main(void)
   MX_TIM2_Init();
   MX_FDCAN1_Init();
   /* USER CODE BEGIN 2 */
-  int32_t CH1_DC = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,7 +102,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  phases();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

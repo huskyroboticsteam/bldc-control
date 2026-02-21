@@ -1,0 +1,25 @@
+#ifndef __PHASES_H
+#define __PHASES_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "main.h"
+
+/* Exported function prototypes ---------------------------------------------*/
+
+/**
+ * @brief  Runs the 6-step commutation phase control loop.
+ * @retval int (never returns under normal operation)
+ */
+int phases(void);
+
+#define ROTOR_STATE_COUNT   6
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __PHASES_H */
+
