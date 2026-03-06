@@ -27,7 +27,8 @@ Driver_Code/phases.o: ../Driver_Code/phases.c ../Core/Inc/main.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
- ../Driver_Code/phases.h
+ ../Driver_Code/phases.h ../Driver_Code/CAN.h ../CAN26/CANPacket.h \
+ ../CAN26/CANHelpers.h ../CAN26/CANCommandIDs.h ../Driver_Code/phases.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -57,4 +58,9 @@ Driver_Code/phases.o: ../Driver_Code/phases.c ../Core/Inc/main.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
+../Driver_Code/phases.h:
+../Driver_Code/CAN.h:
+../CAN26/CANPacket.h:
+../CAN26/CANHelpers.h:
+../CAN26/CANCommandIDs.h:
 ../Driver_Code/phases.h:

@@ -13,6 +13,8 @@ RM := rm -rf
 -include Driver_Code/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include CAN26/Ports/subdir.mk
+-include CAN26/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

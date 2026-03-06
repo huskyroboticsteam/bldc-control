@@ -14,7 +14,10 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g4xx_hal.h"
-#include "main.h"
+#include "CANPacket.h"
+#include "CANCommandIDs.h"
+
+
 
 #ifdef __cplusplus
 }

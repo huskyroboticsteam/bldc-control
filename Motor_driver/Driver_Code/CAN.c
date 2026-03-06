@@ -5,12 +5,12 @@
  *      Author: becca
  */
 
-#include "main.h"
+
 #include "CAN.h"
 
 //packet structure = Priority bit + (7 bit (Board + Device)) + Domain + DLC + (1 bit ACK + 7 bit command ID + 7 byte data)
 //       									^ UUID                                      ^data
-int ProcessCAN(CANPacket* receivedPacket, CANPacket* packetToSend) {
+int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
 
 	const uint8_t* data = CANGetDataConst(receivedPacket);
 	uint8_t command = (*data & 0x7f); //removing first bit ACK
@@ -32,31 +32,31 @@ int ProcessCAN(CANPacket* receivedPacket, CANPacket* packetToSend) {
         case(0x03): //BLDC UUID
             switch(command) //check command ID
             {
-                case(CAN_COMMAND_ID_BLDC_INPUT_MODE): //
+                case(CAN_COMMAND_ID__BLDC_INPUT_MODE): //
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_INPUT_POSITION)://
+                case(CAN_COMMAND_ID__BLDC_INPUT_POSITION)://
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_INPUT_VELOCITY)://
+                case(CAN_COMMAND_ID__BLDC_INPUT_VELOCITY)://
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_DIRECT_WRITE):
+                case(CAN_COMMAND_ID__BLDC_DIRECT_WRITE):
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_DIRECT_READ):
+                case(CAN_COMMAND_ID__BLDC_DIRECT_READ):
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_DIRECT_READ_RESULT):
+                case(CAN_COMMAND_ID__BLDC_DIRECT_READ_RESULT):
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_ENCODER_ESTIMATE_GET):
+                case(CAN_COMMAND_ID__BLDC_ENCODER_ESTIMATE_GET):
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_ENCODER_ESTIMATE):
+                case(CAN_COMMAND_ID__BLDC_ENCODER_ESTIMATE):
 
                     break;
-                case(CAN_COMMAND_ID_BLDC_AXIS_STATE):
+                case(CAN_COMMAND_ID__BLDC_AXIS_STATE):
 
                     break;
                 default:
@@ -67,7 +67,7 @@ int ProcessCAN(CANPacket* receivedPacket, CANPacket* packetToSend) {
 
 
         default: //recieved Packet with non-valid ID
-            return ERROR_INVALID_PACKET;
+            //return ERROR_INVALID_PACKET;
     }
 
     //return err;
