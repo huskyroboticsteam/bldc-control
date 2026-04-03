@@ -1,6 +1,6 @@
 # bldc-control
 
-BLDC motor board firmware by Shahanz Mohideen & Becca Caulton for 2025-2026
+BLDC motor board firmware by Shahnaz Mohideen & Becca Caulton for 2025-2026
 
 Motor used: https://www.revrobotics.com/rev-21-1651/ 
 
