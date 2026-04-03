@@ -25,8 +25,8 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
             switch(command) //check command ID
             {
                 case(CAN_COMMAND_ID__STEPPER_DRIVE_REVS): {//idk what packets this motor takes in so decide once driver done
-						CANPeripheralPacket_SetPWMDutyCycle_Decoded_t decode = CANPeripheralPacket_SetPWMDutyCycle_Decode(receivedPacket);
-                		float duty_cycle = decode.dutyCycle;
+						CANPeripheralPacket_SetPWMDutyCycle_Decoded_t data = CANPeripheralPacket_SetPWMDutyCycle_Decode(receivedPacket);
+                		float duty_cycle = data.dutyCycle;
                 		//call function to change degrees of motor
                     break;
                 }
@@ -35,9 +35,8 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
                     //err = ERROR_INVALID_TTC;
                     break;
             }
-
     }
-    return 0;
+
     //return err;
 }
 
