@@ -1,28 +1,24 @@
-19:54:50 **** Incremental Build of configuration Debug for project Motor_driver ****
+20:22:32 **** Incremental Build of configuration Debug for project Camera_motor ****
 make -j12 all 
-arm-none-eabi-gcc "../Driver_Code/phases.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/phases.d" -MT"Driver_Code/phases.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/phases.o"
-arm-none-eabi-gcc -o "Motor_driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Motor_driver\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Motor_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Motor_driver.elf
+arm-none-eabi-gcc "../Driver_Code/CAN.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Driver_Code -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26" -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/CAN.d" -MT"Driver_Code/CAN.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/CAN.o"
+../Driver_Code/CAN.c: In function 'ProcessCAN':
+../Driver_Code/CAN.c:22:9: warning: implicit declaration of function 'Print' [-Wimplicit-function-declaration]
+   22 |         Print("\r\n\r\nBeginning of CAMERA_SERVO\r\n\r\n");
+      |         ^~~~~
+../Driver_Code/CAN.c:29:39: warning: unused variable 'duty_cycle' [-Wunused-variable]
+   29 |                                 float duty_cycle = data.dutyCycle;
+      |                                       ^~~~~~~~~~
+../Driver_Code/CAN.c:41:1: warning: control reaches end of non-void function [-Wreturn-type]
+   41 | }
+      | ^
+arm-none-eabi-gcc -o "Camera_motor.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Camera_motor\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Camera_motor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Camera_motor.elf
  
-arm-none-eabi-size  Motor_driver.elf 
-arm-none-eabi-objdump -h -S Motor_driver.elf  > "Motor_driver.list"
+arm-none-eabi-size  Camera_motor.elf 
+arm-none-eabi-objdump -h -S Camera_motor.elf  > "Camera_motor.list"
    text	   data	    bss	    dec	    hex	filename
-  13292	     12	   1748	  15052	   3acc	Motor_driver.elf
+  12604	     12	   1748	  14364	   381c	Camera_motor.elf
 Finished building: default.size.stdout
  
-Finished building: Motor_driver.list
- 
-19:54:56 **** Incremental Build of configuration Debug for project Motor_driver ****
-make -j12 all 
-arm-none-eabi-size  Motor_driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13292	     12	   1748	  15052	   3acc	Motor_driver.elf
-Finished building: default.size.stdout
- 
-19:55:47 **** Incremental Build of configuration Debug for project Motor_driver ****
-make -j12 all 
-arm-none-eabi-size  Motor_driver.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13292	     12	   1748	  15052	   3acc	Motor_driver.elf
-Finished building: default.size.stdout
+Finished building: Camera_motor.list
  

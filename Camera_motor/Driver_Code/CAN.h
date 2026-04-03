@@ -15,9 +15,16 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g4xx_hal.h"
 #include "main.h"
+#include "CANPacket.h"
+#include "CANCommandIDs.h"
+#include "CANDevices.h"
+#include "CANHelpers.h"
+#include "Peripheral.h"
+#include "DecodePeripheral.h"
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* CAN_H_ */
+

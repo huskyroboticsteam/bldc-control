@@ -27,7 +27,13 @@ Driver_Code/CAN.o: ../Driver_Code/CAN.c ../Core/Inc/main.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
- ../Driver_Code/CAN.h
+ ../Driver_Code/CAN.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANPacket.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANHelpers.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANCommandIDs.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANDevices.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets/Peripheral.h \
+ C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets/DecodePeripheral.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -58,3 +64,9 @@ Driver_Code/CAN.o: ../Driver_Code/CAN.c ../Core/Inc/main.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 ../Driver_Code/CAN.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANPacket.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANHelpers.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANCommandIDs.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/CANDevices.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets/Peripheral.h:
+C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets/DecodePeripheral.h:

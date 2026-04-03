@@ -10,7 +10,7 @@
 
 //packet structure = Priority bit + (7 bit (Board + Device)) + Domain + DLC + (1 bit ACK + 7 bit command ID + 7 byte data)
 //       									^ UUID                                      ^data
-int ProcessCAN(CANPacket* receivedPacket, CANPacket* packetToSend) {
+int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
 
 	const uint8_t* data = CANGetDataConst(receivedPacket);
 	uint8_t command = (*data & 0x7f); //removing first bit ACK
@@ -24,12 +24,12 @@ int ProcessCAN(CANPacket* receivedPacket, CANPacket* packetToSend) {
         if(UUID == CAN_UUID_TELEMETRY){
             switch(command) //check command ID
             {
-                case(CAN_COMMAND_ID_STEPPER_DRIVE_REVS): //idk what packets this motor takes in
+                case(CAN_COMMAND_ID__STEPPER_DRIVE_REVS): {//idk what packets this motor takes in
 						CANPeripheralPacket_SetPWMDutyCycle_Decoded_t data = CANPeripheralPacket_SetPWMDutyCycle_Decode(receivedPacket);
                 		float duty_cycle = data.dutyCycle;
                 		//call function
                     break;
-
+                }
                 default:
                     Print("Default");
                     //err = ERROR_INVALID_TTC;
