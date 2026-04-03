@@ -29,7 +29,7 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
                 		float duty_cycle = decode.dutyCycle;
                 		//call function to change wtv needed for motor
                     break;
-                } //just lmk which things you want to add to motor driver and i can add more case statements
+                }
                 default:
                     Print("Default");
                     //err = ERROR_INVALID_TTC;

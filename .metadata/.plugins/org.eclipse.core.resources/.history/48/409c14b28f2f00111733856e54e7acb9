@@ -27,9 +27,9 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
                 case(CAN_COMMAND_ID__STEPPER_DRIVE_REVS): {//idk what packets this motor takes in so decide once driver done
 						CANPeripheralPacket_SetPWMDutyCycle_Decoded_t decode = CANPeripheralPacket_SetPWMDutyCycle_Decode(receivedPacket);
                 		float duty_cycle = decode.dutyCycle;
-                		//call function to change wtv needed for motor
+                		//call function to change degrees of motor
                     break;
-                } //just lmk which things you want to add to motor driver and i can add more case statements
+                }
                 default:
                     Print("Default");
                     //err = ERROR_INVALID_TTC;
