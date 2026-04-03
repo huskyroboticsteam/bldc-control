@@ -24,10 +24,10 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
         if(UUID == CAN_UUID_TELEMETRY){
             switch(command) //check command ID
             {
-                case(CAN_COMMAND_ID__STEPPER_DRIVE_REVS): {//idk what packets this motor takes in so decide once driver done
+                case(CAN_COMMAND_ID__STEPPER_DRIVE_REVS): {//idk what packets this motor takes in
 						CANPeripheralPacket_SetPWMDutyCycle_Decoded_t data = CANPeripheralPacket_SetPWMDutyCycle_Decode(receivedPacket);
                 		float duty_cycle = data.dutyCycle;
-                		//call function to change degrees of motor
+                		//call function
                     break;
                 }
                 default:
