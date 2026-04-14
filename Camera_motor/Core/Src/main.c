@@ -60,13 +60,13 @@ static void MX_FDCAN1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 // Calculates timer compare value from angle (0-180 degrees) and maps to pulse width between 500 us and 2500 us.
- * Maps angle to a pulse width between 500µs (0°) and 2500µs (180°)
+ /* Maps angle to a pulse width between 500µs (0°) and 2500µs (180°) */
 static uint32_t calculate_pwm(float angle)
 {
     if (angle < 0.0f) angle = 0.0f;
     if (angle > 180.0f) angle = 180.0f;
 
-    return (uint32_t)((angle / 180.0f) * 2000.0f) + 500.0f;
+    return (uint32_t)((angle / 180.0f) * 2000.0f + 500.0f);
 }
 
 static void set_servo_angle(float angle)
@@ -121,8 +121,7 @@ int main(void)
   sFilterConfig.FilterID1 = 0x000; 
   sFilterConfig.FilterID2 = 0x000;  
 
-  if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK)
-  {
+  if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK){
     Error_Handler();
   }
 
@@ -130,30 +129,39 @@ int main(void)
                                    FDCAN_ACCEPT_IN_RX_FIFO0,   
                                    FDCAN_ACCEPT_IN_RX_FIFO0, 
                                    FDCAN_FILTER_REMOTE,
-                                   FDCAN_FILTER_REMOTE) != HAL_OK)
-  {
+                                   FDCAN_FILTER_REMOTE) != HAL_OK){
     Error_Handler();
   }
 
-  if (HAL_FDCAN_Start(&hfdcan1) != HAL_OK)
-  {
+  if (HAL_FDCAN_Start(&hfdcan1) != HAL_OK){
     Error_Handler();
   }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+  while (1){
     FDCAN_RxHeaderTypeDef rxHeader;
     uint8_t rxData[8];
 
-    if (HAL_FDCAN_GetRxFifoFillLevel(&hfdcan1, FDCAN_RX_FIFO0) > 0)
-    {
-      if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &rxHeader, rxData) == HAL_OK)
-      {
-        float angle = (float)rxData[0];   // CAN byte should correspond to angle
-        set_servo_angle(angle);
+    if (HAL_FDCAN_GetRxFifoFillLevel(&hfdcan1, FDCAN_RX_FIFO0) > 0){
+      if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &rxHeader, rxData) == HAL_OK){
+
+    	uint8_t UUID = (rxHeader.Identifier & 0x03F8) >> 3; //get upper 7 bit UUID (potentially scuffed math)
+    	uint8_t command = rxData[0] & 0x7F; //get rid of ACK
+
+    	if(UUID == CAN_UUID_TELEMETRY){
+    		switch (command){
+    			case (CAN_COMMAND_ID_SERVO_ANGLE):{ //need to ask Hayden about adding this to CAN library
+    		        float angle = (float)rxData[0];   // CAN byte should correspond to angle
+    		        set_servo_angle(angle);
+    			}
+
+    			default:{
+    				//meow
+    			}
+    	}
+
       }
     }
 

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Camera_motor/Driver_Code/servo_Driver.c&apos;" deleteContents="false" description="Delete resource &apos;Camera_motor/Driver_Code/servo_Driver.c&apos;" element1="/Camera_motor/Driver_Code/servo_Driver.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1776206014482"/>
+</session>

@@ -5,6 +5,12 @@
  *      Author: becca
  */
 
+
+
+//Lowkey realized this is overkill for function of camera servo so ignore this for now and functionality moved instead to main.c
+// - Becca
+
+//--------------------------------------------------------------------------------------------
 #include "main.h"
 #include "CAN.h"
 
