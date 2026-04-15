@@ -33,13 +33,13 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
             switch(command) //check command ID
             {
                 case(CAN_COMMAND_ID__BLDC_INPUT_MODE): //
-
+					//open/closed loop?
                     break;
                 case(CAN_COMMAND_ID__BLDC_INPUT_POSITION)://
 
                     break;
                 case(CAN_COMMAND_ID__BLDC_INPUT_VELOCITY)://
-
+					//set PID speed
                     break;
                 case(CAN_COMMAND_ID__BLDC_DIRECT_WRITE):
 
@@ -54,10 +54,10 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
 
                     break;
                 case(CAN_COMMAND_ID__BLDC_ENCODER_ESTIMATE):
-
+					//return speed
                     break;
                 case(CAN_COMMAND_ID__BLDC_AXIS_STATE):
-
+					//enable/disable motor
                     break;
                 default:
                     Print("Default");

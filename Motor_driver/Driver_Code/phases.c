@@ -57,8 +57,6 @@ int phases(void)
 
   while (1)
   {
-
-
 	  //pwm simulation (change to actual pwm later)
 	  while (CH1_DC < 21250){
 		  TIM2->CCR1 = CH1_DC;
