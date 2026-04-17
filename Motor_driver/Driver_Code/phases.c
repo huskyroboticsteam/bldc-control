@@ -65,38 +65,76 @@ int phases(void)
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+  HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // A Low
+  HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // B Low
+  HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET); // C Low
 
 
   while (1)
   {
 
 	  //reset all
-
-
+	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);
+	  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+	  
+	  HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);
+	  
+	  
       switch(Hall_GetStep()){
-      	  case 1:
-
+      	  case 0: // 000 (invalid)
+      		  break;
+      		  
+      	  case 1: // 001
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);	 // High
+      		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 21250); // A High
       		break;
 
-      	  case 2:
-
+      	  case 2: // 010
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // High
+      		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 21250); // B High
       		break;
 
-      	  case 3:
-
+      	  case 3: // 011
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_SET);	 // High
+      		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 21250); // B High
       		break;
-      	  case 4:
-
+      	  case 4: // 100
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET);	 // Low
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // High
+      		      		 		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 21250); // C High
 			break;
 
-      	  case 5:
-
+      	  case 5: // 101
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // High
+      		      		      		 		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 21250); // A High
 			break;
 
-      	  case 6:
+      	  case 6: // 110
+      		HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOB, C_Low_Pin, GPIO_PIN_RESET); // Low
+      		HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // High
+      		      		
+      		__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 21250); // C High
 
 			break;
-      	  case 7:
+      	  case 7: // 111 (invalid)
 
 			break;
         }
