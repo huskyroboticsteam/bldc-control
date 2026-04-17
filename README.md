@@ -16,7 +16,7 @@ Presentation: https://docs.google.com/presentation/d/1GThbB09xTLLST71g931fdWaHDS
 
 board reference datasheet: https://www.ti.com/lit/ds/symlink/drv8323.pdf
 
-
+odrive spec for reference of motors being used: https://www.notion.so/Projects-284633f5896d80e69232da7a280690be?p=284633f5896d80149b6ffc7ecf2cd94d&pm=s
 
 note for future Becca:
 The 6x mode pwm sends one pwm to one gate and one high signal to the other gate (alternating with phases), not through the whole half bridge. The half bridge has a constant voltage and the pwm controls how quickly/slowly the "switch" (mosfet) opens and closes (essentially creating a new matching pwm signal through the half bridge from the constant voltage).
