@@ -639,8 +639,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x1c ./Driver_Code/CAN.o
  .debug_macro   0x00000000       0x70 ./Driver_Code/CAN.o
  .debug_macro   0x00000000       0x64 ./Driver_Code/CAN.o
- .debug_line    0x00000000      0x88d ./Driver_Code/CAN.o
- .debug_str     0x00000000    0xf1e62 ./Driver_Code/CAN.o
+ .debug_line    0x00000000      0x890 ./Driver_Code/CAN.o
+ .debug_str     0x00000000    0xf1e69 ./Driver_Code/CAN.o
  .comment       0x00000000       0x44 ./Driver_Code/CAN.o
  .debug_frame   0x00000000       0x58 ./Driver_Code/CAN.o
  .ARM.attributes

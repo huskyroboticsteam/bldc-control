@@ -7,12 +7,12 @@ static const uint8_t hallToStep[8] =
 {
     0, // invalid (000)
     1, // 001
-    3, // 010
-    2, // 011
-    5, // 100
-    6, // 101
-    4, // 110
-    0  // invalid (111)
+    2, // 010
+    3, // 011
+    4, // 100
+    5, // 101
+    6, // 110
+    7  // invalid (111)
 };
 
 
@@ -27,8 +27,7 @@ uint8_t Hall_ReadRawState(void)
     uint8_t b = HAL_GPIO_ReadPin(HALL_B_PORT, HALL_B_PIN);
     uint8_t c = HAL_GPIO_ReadPin(HALL_C_PORT, HALL_C_PIN);
 
-    return (c << 2) | (b << 1) | a; //map output to states
-
+    return (c << 2) | (b << 1) | a; //map output to states 'xxxxxcba'
 }
 
 uint8_t Hall_GetStep(void)

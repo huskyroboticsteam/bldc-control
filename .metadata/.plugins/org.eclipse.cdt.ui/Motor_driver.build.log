@@ -1,28 +1,116 @@
-19:45:49 **** Incremental Build of configuration Debug for project Motor_driver ****
+19:45:20 **** Build of configuration Debug for project Motor_driver ****
 make -j12 all 
 arm-none-eabi-gcc "../Driver_Code/CAN.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -include"C:/Users/becca/Documents/GitHub/bldc-control/Motor_driver/CAN26/CANPacket.h" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/CAN.d" -MT"Driver_Code/CAN.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/CAN.o"
+arm-none-eabi-gcc "../Driver_Code/PID_draft.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/PID_draft.d" -MT"Driver_Code/PID_draft.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/PID_draft.o"
+arm-none-eabi-gcc "../Driver_Code/SPI_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/SPI_driver.d" -MT"Driver_Code/SPI_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/SPI_driver.o"
+arm-none-eabi-gcc "../Driver_Code/fsm.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/fsm.d" -MT"Driver_Code/fsm.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/fsm.o"
+arm-none-eabi-gcc "../Driver_Code/hall_sensor.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/hall_sensor.d" -MT"Driver_Code/hall_sensor.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/hall_sensor.o"
+arm-none-eabi-gcc "../Driver_Code/main_fake.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/main_fake.d" -MT"Driver_Code/main_fake.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/main_fake.o"
 arm-none-eabi-gcc "../Driver_Code/phases.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/phases.d" -MT"Driver_Code/phases.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/phases.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
+../Driver_Code/PID_draft.c: In function 'DisablePID':
+../Driver_Code/PID_draft.c:24:5: error: 'enabledPID' undeclared (first use in this function)
+   24 |     enabledPID = 0;
+      |     ^~~~~~~~~~
+../Driver_Code/PID_draft.c:24:5: note: each undeclared identifier is reported only once for each function it appears in
+../Driver_Code/PID_draft.c: In function 'EnablePID':
+../Driver_Code/PID_draft.c:28:5: error: 'enabledPID' undeclared (first use in this function); did you mean 'EnablePID'?
+   28 |     enabledPID = 1;
+      |     ^~~~~~~~~~
+      |     EnablePID
+../Driver_Code/PID_draft.c: At top level:
+../Driver_Code/PID_draft.c:31:1: error: unknown type name 'uint8_t'
+   31 | uint8_t PIDIsEnabled() {
+      | ^~~~~~~
+../Driver_Code/PID_draft.c:1:1: note: 'uint8_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+  +++ |+#include <stdint.h>
+    1 | //used http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/ as reference
+../Driver_Code/PID_draft.c: In function 'PIDIsEnabled':
+../Driver_Code/PID_draft.c:32:12: error: 'enabledPID' undeclared (first use in this function); did you mean 'EnablePID'?
+   32 |     return(enabledPID);
+      |            ^~~~~~~~~~
+      |            EnablePID
+../Driver_Code/PID_draft.c: At top level:
+../Driver_Code/PID_draft.c:40:18: error: unknown type name 'int32_t'
+   40 | void setK_Values(int32_t kP, int32_t kI, int32_t kD){
+      |                  ^~~~~~~
+../Driver_Code/PID_draft.c:40:18: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:40:30: error: unknown type name 'int32_t'
+   40 | void setK_Values(int32_t kP, int32_t kI, int32_t kD){
+      |                              ^~~~~~~
+../Driver_Code/PID_draft.c:40:30: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:40:42: error: unknown type name 'int32_t'
+   40 | void setK_Values(int32_t kP, int32_t kI, int32_t kD){
+      |                                          ^~~~~~~
+../Driver_Code/PID_draft.c:40:42: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:46:16: error: unknown type name 'int32_t'
+   46 | void setMaxMin(int32_t max, int32_t min){
+      |                ^~~~~~~
+../Driver_Code/PID_draft.c:46:16: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:46:29: error: unknown type name 'int32_t'
+   46 | void setMaxMin(int32_t max, int32_t min){
+      |                             ^~~~~~~
+../Driver_Code/PID_draft.c:46:29: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:51:1: error: unknown type name 'int32_t'
+   51 | int32_t PID(int32_t target){
+      | ^~~~~~~
+../Driver_Code/PID_draft.c:51:1: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c:51:13: error: unknown type name 'int32_t'
+   51 | int32_t PID(int32_t target){
+      |             ^~~~~~~
+../Driver_Code/PID_draft.c:51:13: note: 'int32_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../Driver_Code/PID_draft.c: In function 'PIDIsEnabled':
+../Driver_Code/PID_draft.c:33:1: warning: control reaches end of non-void function [-Wreturn-type]
+   33 | }
+      | ^
+make: *** [Driver_Code/subdir.mk:39: Driver_Code/PID_draft.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Driver_Code/hall_sensor.c:1:10: fatal error: hall_sensor.h: No such file or directory
+    1 | #include "hall_sensor.h" //make later
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Driver_Code/subdir.mk:39: Driver_Code/hall_sensor.o] Error 1
 ../Driver_Code/CAN.c: In function 'ProcessCAN':
 ../Driver_Code/CAN.c:22:9: warning: implicit declaration of function 'Print' [-Wimplicit-function-declaration]
    22 |         Print("\r\n\r\nBeginning of BLDC_CAN\r\n\r\n");
       |         ^~~~~
-../Driver_Code/CAN.c:74:1: warning: control reaches end of non-void function [-Wreturn-type]
-   74 | }
+../Driver_Code/phases.c: In function 'phases':
+../Driver_Code/phases.c:58:22: error: 'htim1' undeclared (first use in this function)
+   58 |   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+      |                      ^~~~~
+../Driver_Code/phases.c:58:22: note: each undeclared identifier is reported only once for each function it appears in
+../Driver_Code/main_fake.c: In function 'HAL_GPIO_EXTI_Callback':
+../Driver_Code/main_fake.c:104:23: error: 'HALL_A_PIN' undeclared (first use in this function)
+  104 |       if (GPIO_Pin == HALL_A_PIN ||
+      |                       ^~~~~~~~~~
+../Driver_Code/main_fake.c:104:23: note: each undeclared identifier is reported only once for each function it appears in
+../Driver_Code/phases.c:71:14: warning: implicit declaration of function 'Hall_GetStep' [-Wimplicit-function-declaration]
+   71 |       switch(Hall_GetStep()){
+      |              ^~~~~~~~~~~~
+../Driver_Code/main_fake.c:105:23: error: 'HALL_B_PIN' undeclared (first use in this function)
+  105 |           GPIO_Pin == HALL_B_PIN ||
+      |                       ^~~~~~~~~~
+../Driver_Code/phases.c:44:11: warning: unused variable 'CH1_DC' [-Wunused-variable]
+   44 |   int32_t CH1_DC = 0;
+      |           ^~~~~~
+../Driver_Code/CAN.c:58:48: warning: implicit declaration of function 'Hall_GetSpeed' [-Wimplicit-function-declaration]
+   58 |                                         return Hall_GetSpeed();
+      |                                                ^~~~~~~~~~~~~
+../Driver_Code/CAN.c:75:1: warning: control reaches end of non-void function [-Wreturn-type]
+   75 | }
       | ^
-arm-none-eabi-gcc -o "Motor_driver.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Motor_driver\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Motor_driver.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Motor_driver.elf
- 
-arm-none-eabi-size  Motor_driver.elf 
-arm-none-eabi-objdump -h -S Motor_driver.elf  > "Motor_driver.list"
-   text	   data	    bss	    dec	    hex	filename
-  13292	     12	   1748	  15052	   3acc	Motor_driver.elf
-Finished building: default.size.stdout
- 
-Finished building: Motor_driver.list
- 
+../Driver_Code/main_fake.c:106:23: error: 'HALL_C_PIN' undeclared (first use in this function)
+  106 |           GPIO_Pin == HALL_C_PIN){
+      |                       ^~~~~~~~~~
+make: *** [Driver_Code/subdir.mk:39: Driver_Code/phases.o] Error 1
+../Driver_Code/main_fake.c:107:11: warning: implicit declaration of function 'Hall_EdgeCallback' [-Wimplicit-function-declaration]
+  107 |           Hall_EdgeCallback();
+      |           ^~~~~~~~~~~~~~~~~
+../Driver_Code/main_fake.c: At top level:
+../Driver_Code/main_fake.c:103:8: warning: 'HAL_GPIO_EXTI_Callback' defined but not used [-Wunused-function]
+  103 |   void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [Driver_Code/subdir.mk:39: Driver_Code/main_fake.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
 
-19:45:51 Build Finished. 0 errors, 2 warnings. (took 1s.952ms)
+19:45:22 Build Failed. 21 errors, 8 warnings. (took 1s.801ms)
 

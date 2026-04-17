@@ -1,4 +1,7 @@
 //this is a fake draft of main.....
+//I will move all these files somewhere else eventually but just want to get it all drafted out for now
+// - Becca
+//----------------------------------------------
 /**
   ******************************************************************************
   * @file           : main.c

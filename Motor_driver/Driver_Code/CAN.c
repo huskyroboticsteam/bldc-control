@@ -55,6 +55,7 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
                     break;
                 case(CAN_COMMAND_ID__BLDC_ENCODER_ESTIMATE):
 					//return speed
+					return Hall_GetSpeed();
                     break;
                 case(CAN_COMMAND_ID__BLDC_AXIS_STATE):
 					//enable/disable motor

@@ -1,16 +1,15 @@
-20:22:32 **** Incremental Build of configuration Debug for project Camera_motor ****
+19:45:12 **** Build of configuration Debug for project Camera_motor ****
 make -j12 all 
 arm-none-eabi-gcc "../Driver_Code/CAN.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Driver_Code -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26" -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/CAN.d" -MT"Driver_Code/CAN.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/CAN.o"
+arm-none-eabi-gcc "../Driver_Code/servo_Driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../Driver_Code -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26" -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26/Packets" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Driver_Code/servo_Driver.d" -MT"Driver_Code/servo_Driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Driver_Code/servo_Driver.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I../CAN26 -I../Driver_Code -I"C:/Users/becca/Documents/GitHub/bldc-control/Camera_motor/CAN26" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Driver_Code/CAN.c: In function 'ProcessCAN':
 ../Driver_Code/CAN.c:22:9: warning: implicit declaration of function 'Print' [-Wimplicit-function-declaration]
    22 |         Print("\r\n\r\nBeginning of CAMERA_SERVO\r\n\r\n");
       |         ^~~~~
 ../Driver_Code/CAN.c:29:39: warning: unused variable 'duty_cycle' [-Wunused-variable]
-   29 |                                 float duty_cycle = data.dutyCycle;
+   29 |                                 float duty_cycle = decode.dutyCycle;
       |                                       ^~~~~~~~~~
-../Driver_Code/CAN.c:41:1: warning: control reaches end of non-void function [-Wreturn-type]
-   41 | }
-      | ^
 arm-none-eabi-gcc -o "Camera_motor.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\bldc-control\Camera_motor\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Camera_motor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Camera_motor.elf
  
@@ -23,5 +22,5 @@ Finished building: default.size.stdout
 Finished building: Camera_motor.list
  
 
-20:22:34 Build Finished. 0 errors, 3 warnings. (took 1s.718ms)
+19:45:20 Build Finished. 0 errors, 2 warnings. (took 7s.629ms)
 
