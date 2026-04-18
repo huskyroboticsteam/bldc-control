@@ -53,7 +53,7 @@ int32_t PID(int32_t target){
         return(0);
     }
 
-    int current = GetHallSensor(); //from hall sensor/wtv get some sort of data
+    int current = Hall_GetSpeed(); //from hall sensor/wtv get some sort of data
     int error = target - current;
 
     integral = integral + error;
