@@ -446,6 +446,25 @@ bool DRV8323_IsFaulted(DRV8323_Handle_t *hdrv)
     return (HAL_GPIO_ReadPin(hdrv->nfault_port, hdrv->nfault_pin) == GPIO_PIN_RESET);
 }
 
+void Motor_InitAll(void)
+{
+      // --- Motor 0: 6-PWM for FOC, 100 ns dead-time ---
+      g_motor[0].hspi        = &hspi1;
+      g_motor[0].cs_port     = GPIOA;  
+      g_motor[0].cs_pin     = GPIO_PIN_4;
+
+    // Not sure about enable and fault signals. In SPI reasearch I did there was only CS, clk, mosi, and miso
+    // https://www.analog.com/en/resources/analog-dialogue/articles/introduction-to-spi-interface.html
+    // https://controllerstech.com/how-to-use-spi-with-stm32/ 
+      //g_motor[0].en_port     = GPIOB;  
+      //g_motor[0].en_pin     = GPIO_PIN_0;
+      //g_motor[0].nfault_port = GPIOB;  
+      //g_motor[0].nfault_pin = GPIO_PIN_1;
+      //g_motor[0].motor_id    = 0;
+      DRV8323_DefaultConfig(&g_motor[0], DRV8323_MODE_6PWM, DRV8323_DT_100NS);
+      DRV8323_Init(&g_motor[0]);
+}
+
 /* =========================================================================
  * Example: application-level multi-motor setup (place in main.c or
  * a motor_controller.c file — shown here as reference only).
