@@ -1,36 +1,25 @@
 //handle SPI logic from DRV8323S data sheet
 /**
- * @file    drv8323.c
+ * @file    SPI_driver.c
  * @brief   DRV8323 Three-Phase Gate Driver Implementation (SPI, STM32 HAL)
  *
- * Usage — quick-start for two motors sharing SPI1:
+ * Usage — quick-start for motor w/ SPI:
  *
- *   DRV8323_Handle_t motor1, motor2;
+ *   DRV8323_Handle_t motor;
  *
- *   // Motor 1 — 6-PWM mode
- *   motor1.hspi       = &hspi1;
- *   motor1.cs_port    = GPIOA;  motor1.cs_pin    = GPIO_PIN_4;
- *   motor1.en_port    = GPIOB;  motor1.en_pin    = GPIO_PIN_0;
- *   motor1.nfault_port= GPIOB;  motor1.nfault_pin= GPIO_PIN_1;
- *   motor1.motor_id   = 1;
- *   DRV8323_DefaultConfig(&motor1, DRV8323_MODE_6PWM, DRV8323_DT_100NS);
- *   DRV8323_Init(&motor1);
- *
- *   // Motor 2 — 3-PWM mode
- *   motor2.hspi       = &hspi1;
- *   motor2.cs_port    = GPIOA;  motor2.cs_pin    = GPIO_PIN_5;
- *   motor2.en_port    = GPIOB;  motor2.en_pin    = GPIO_PIN_2;
- *   motor2.nfault_port= NULL;
- *   motor2.motor_id   = 2;
- *   DRV8323_DefaultConfig(&motor2, DRV8323_MODE_3PWM, DRV8323_DT_100NS);
- *   DRV8323_Init(&motor2);
+ *   // Motor — 6-PWM mode
+ *   motor.hspi       = &hspi;
+ *   motor.cs_port    = GPIOA;  motor.cs_pin    = GPIO_PIN_4;
+ *   motor.en_port    = GPIOB;  motor.en_pin    = GPIO_PIN_0;
+ *   motor.nfault_port= GPIOB;  motor.nfault_pin= GPIO_PIN_1;
+ *   motor.motor_id   = 1;
+ *   DRV8323_DefaultConfig(&motor, DRV8323_MODE_6PWM, DRV8323_DT_100NS);
+ *   DRV8323_Init(&motor);
  */
 
-#include "drv8323.h"
+//i named this poorly but this is file that interacts with the DRV8323 driver, main communication protocol is SPI
+#include "SPI_driver.h"
 
-/* =========================================================================
- * Private helpers
- * ========================================================================= */
 
 /** Assert CS low — DRV8323 is active-low CS */
 static inline void cs_assert(DRV8323_Handle_t *hdrv)
@@ -57,7 +46,7 @@ static inline void cs_deassert(DRV8323_Handle_t *hdrv)
 DRV8323_Result_t DRV8323_ReadReg(DRV8323_Handle_t *hdrv,
                                    uint8_t reg, uint16_t *out)
 {
-    if (!hdrv || !out) return DRV8323_ERR_ARG;
+    if (!hdrv || !out) return DRV8323_ERR_ARG; //check hdrv (driver handler), write to out
 
     uint16_t tx = DRV8323_READ_FRAME(reg);
     uint16_t rx = 0;
@@ -142,7 +131,7 @@ DRV8323_Result_t DRV8323_WriteReg(DRV8323_Handle_t *hdrv,
  *    VDS_LVL  = 0x0    — 0.06 V VDS threshold (lowest, safest)
  *
  *  CSA_CTRL (0x06):
- *    CSA_FET    = 1    — Sense across low-side FET (no shunt required)
+ *    CSA_FET    = 1    — Sense across low-side FET (no shunt required) (TODO: update code since we have shunt resistor)
  *    VREF_DIV   = 1    — VREF = AVDD/2
  *    LS_REF     = 0
  *    CSA_GAIN   = 0b10 — 20 V/V
@@ -192,7 +181,7 @@ void DRV8323_DefaultConfig(DRV8323_Handle_t   *hdrv,
     /* ---- CSA_CTRL ---------------------------------------------------- */
     /*
      * CSA_GAIN = 20 V/V (0b10)
-     * If your board uses external shunt resistors, clear CSA_FET_BIT and
+     * If your board uses external shunt resistors, clear CSA_FET_BIT and (TODO: check with hardware)
      * clear CSA_LS_REF_BIT.
      */
     hdrv->reg_csa_ctrl =

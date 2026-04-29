@@ -1,11 +1,9 @@
 /**
- * @file    drv8323.h
+ * @file    SPI_driver.h
  * @brief   DRV8323 Three-Phase Gate Driver Interface (SPI, STM32 HAL)
  *
- * Supports multiple independent motor instances via per-motor handles.
- * Multiple handles may share one SPI bus with separate CS GPIO pins.
  *
- * Fixed configuration in this driver:
+ * Current configuration in this driver:
  *   CSA gain   = 20 V/V   (CSA_GAIN[1:0] = 0b10)
  *   Dead time  = 100 ns   (DEAD_TIME[1:0] = 0b01 in OCP_CTRL)
  *   Phase mode = 6-PWM    (default, changeable per instance at runtime)
@@ -22,7 +20,7 @@
  *   CPOL       : Low (0)
  *   CPHA       : 2 Edge (1)
  *   NSS        : Software (manual GPIO)
- *   Baud Rate  : <= 10 MHz
+ *   Baud Rate  : <= 10 MHz //check on this later...
  */
 
 #ifndef DRV8323_H
@@ -32,8 +30,7 @@
 extern "C" {
 #endif
 
-/* TODO: Change to your STM32 family, e.g. stm32g4xx_hal.h, stm32h7xx_hal.h */
-#include "stm32f4xx_hal.h"
+//#include "stm32f474RETX_hal.h" //make sure to change this to whatever MCU is on the board
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -77,10 +74,10 @@ extern "C" {
 #define DRV_CTRL_CLR_FLT         (1U << 0)  /* Clear latched faults           */
 
 /* PWM_MODE[1:0] — bits 6:5 */
-#define DRV_PWM_MODE_6X          0x0U  /* Independent HS/LS gate signals    */
-#define DRV_PWM_MODE_3X          0x1U  /* 3 complementary pairs             */
-#define DRV_PWM_MODE_1X          0x2U  /* Single PWM + DIR                  */
-#define DRV_PWM_MODE_INDEP       0x3U  /* No automatic recirculation        */
+#define DRV_PWM_MODE_6X          0x0U  /* Independent HS/LS gate signals (this would use the phases.c file) */
+#define DRV_PWM_MODE_3X          0x1U  /* 3 complementary pairs          (what Adarsh is using... might switch to this) */
+#define DRV_PWM_MODE_1X          0x2U  /* Single PWM + DIR               (supposedly works all on its own....) */
+#define DRV_PWM_MODE_INDEP       0x3U  /* No automatic recirculation     (no clue what this is) */
 
 /* =========================================================================
  * GATE_HS Register (0x03) Bits
@@ -88,8 +85,8 @@ extern "C" {
 #define GATE_HS_LOCK_SHIFT        8U
 #define GATE_HS_LOCK_UNLOCK       0x3U   /* Must be 0b011 to unlock registers */
 #define GATE_HS_IDRIVEP_SHIFT     4U     /* Peak source current selection     */
-#define GATE_HS_IDRIVEN_SHIFT     0U     /* Peak sink current selection       */
-/* Default drive strength — 80 mA source, 120 mA sink */
+#define GATE_HS_IDRIVEN_SHIFT     0U     /* Peak sink current selection      (talk to hardware about this for mosfets) */
+/* Default drive strength — 80 mA source, 120 mA sink (prob wont need this much)*/
 #define GATE_HS_IDRIVEP_DEF       0x3U
 #define GATE_HS_IDRIVEN_DEF       0x3U
 
@@ -113,19 +110,19 @@ extern "C" {
 #define OCP_DEG_SHIFT              4U   /* bits 5:4 deglitch time            */
 #define OCP_VDS_LVL_SHIFT          0U   /* bits 3:0 threshold                */
 
-/* DEAD_TIME options */
+/* DEAD_TIME options (for 6x choose EITHER STM timer deadtime or driver deadtime) */
 #define DRV_DEAD_TIME_50NS         0x0U
 #define DRV_DEAD_TIME_100NS        0x1U  /* <- Default */
 #define DRV_DEAD_TIME_200NS        0x2U
 #define DRV_DEAD_TIME_400NS        0x3U
 
 /* OCP_MODE options */
-#define OCP_MODE_LATCH             0x0U
+#define OCP_MODE_LATCH             0x0U //prob use this to be safe?
 #define OCP_MODE_RETRY             0x1U
 #define OCP_MODE_REPORT_ONLY       0x2U
 #define OCP_MODE_DISABLED          0x3U
 
-/* OCP deglitch */
+/* OCP deglitch (amount of time to check for current spikes before latching)*/
 #define OCP_DEG_1US                0x0U
 #define OCP_DEG_2US                0x1U
 #define OCP_DEG_4US                0x2U
@@ -134,7 +131,7 @@ extern "C" {
 /* =========================================================================
  * CSA_CTRL Register (0x06) Bits
  * ========================================================================= */
-#define CSA_FET_BIT               10U   /* 1 = sense across FET, 0 = shunt  */
+#define CSA_FET_BIT               10U   /* 1 = sense across FET, 0 = shunt  (check with hardware)*/
 #define CSA_VREF_DIV_BIT           9U   /* 1 = VREF = AVDD/2                */
 #define CSA_LS_REF_BIT             8U
 #define CSA_GAIN_SHIFT             6U   /* CSA_GAIN[1:0]                     */
@@ -148,7 +145,7 @@ extern "C" {
  * CSA_GAIN[1:0] — bits 7:6 of CSA_CTRL:
  *   0b00 =  5 V/V
  *   0b01 = 10 V/V
- *   0b10 = 20 V/V  <- Used in this driver
+ *   0b10 = 20 V/V  <- Used in this driver and recommended by Jooyoung
  *   0b11 = 40 V/V
  */
 #define CSA_GAIN_5VV               0x0U
@@ -182,13 +179,11 @@ typedef enum {
 } DRV8323_Result_t;
 
 /* =========================================================================
- * Per-Motor Handle
- *
  * One instance per DRV8323 chip. Hardware fields must be populated by the
  * caller before DRV8323_DefaultConfig() / DRV8323_Init() are called.
  * ========================================================================= */
 typedef struct {
-    /* Hardware bindings (set by caller) */
+    /* Hardware bindings */ //TODO
     SPI_HandleTypeDef *hspi;         /* STM32 HAL SPI handle                 */
     GPIO_TypeDef      *cs_port;      /* CS GPIO port, e.g. GPIOA             */
     uint16_t           cs_pin;       /* CS GPIO pin,  e.g. GPIO_PIN_4        */
@@ -216,10 +211,6 @@ typedef struct {
     uint8_t  motor_id;
     bool     initialized;
 } DRV8323_Handle_t;
-
-/* =========================================================================
- * Public API
- * ========================================================================= */
 
 /**
  * Populate register shadows with safe defaults (gain=20V/V, dt=100ns).
