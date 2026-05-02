@@ -13,7 +13,7 @@
 int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
 
 	const uint8_t* data = CANGetDataConst(receivedPacket);
-	uint8_t command = (*data & 0x7f); //removing first bit ACK
+	uint8_t command = (*data & 0x7F); //removing first bit ACK
 
 	uint16_t  header = CANGetPacketHeader(receivedPacket);
 
@@ -29,7 +29,7 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
             err = ESTOP_ERR_GENERAL;
             break;
        */
-        case(0x03): //BLDC UUID
+        case(0x03): //BLDC UUID (maybe remove if issues with CAN)
             switch(command) //check command ID
             {
                 case(CAN_COMMAND_ID__BLDC_INPUT_MODE): //

@@ -1,10 +1,7 @@
-//this is a fake draft of main.....
-//I will move all these files somewhere else eventually but just want to get it all drafted out for now
-// - Becca
-//----------------------------------------------
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.c
+  * @file           : main_fake.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -20,9 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-
 #include "main.h"
-
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -49,6 +44,8 @@ FDCAN_HandleTypeDef hfdcan1;
 
 TIM_HandleTypeDef htim2;
 
+UART_HandleTypeDef huart1;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -58,6 +55,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_FDCAN1_Init(void);
+static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,24 +96,61 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   MX_FDCAN1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  extern SPI_HandleTypeDef hspi1;
 
-  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-      if (GPIO_Pin == HALL_A_PIN ||
-          GPIO_Pin == HALL_B_PIN ||
-          GPIO_Pin == HALL_C_PIN){
-          Hall_EdgeCallback();
-      }
-  }
+  DRV8323_Handle_t driver_motor;
+
+   void Motor_InitAll(void)
+   {
+        // --- 6-PWM for FOC, 100 ns dead-time ---
+        driver_motor.hspi        = &hspi1;
+        driver_motor.cs_port     = GPIOA;  driver_motor.cs_pin     = GPIO_PIN_4;
+        driver_motor.en_port     = GPIOB;  driver_motor.en_pin     = GPIO_PIN_0;
+        driver_motor.nfault_port = GPIOB;  driver_motor.nfault_pin = GPIO_PIN_1;
+        driver_motor.motor_id    = 0;
+        DRV8323_DefaultConfig(&driver_motor, DRV8323_MODE_6PWM, DRV8323_DT_100NS);
+        DRV8323_Init(&driver_motor);
+   }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-	  phases();
-    /* USER CODE BEGIN 3 */
+	/* USER CODE END WHILE */
+	uint8_t rxByte = 0;
+
+
+	if (HAL_UART_Receive(&hlpuart1, &rxByte, 1, 10) == HAL_OK) // 1 is the size of the data (1 char), 10 is the time to wait for response in ms
+	{
+		switch (rxByte)
+		{
+			case 'a':
+				// Test case A (e.g. turn on user LED)
+				TIM2->CCR1 = 1023;
+				break;
+
+			case 'b':
+				while(){
+					Phases_Hall()
+				}
+				break;
+
+			case 'c':
+				// Test Case C (e.g. send PWM duty cycle command to target CAN device)
+				txPacket = CANPeripheralPacket_SetPWMDutyCycle(thisCANDevice, targetCANDevice, 0x01, 50.0);
+				CANSend(CANHandle, &txPacket);
+				break;
+
+			// Add other cases for device specific testing
+			default:
+				// All other characters
+				break;
+		}
+	}
+	/* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -269,6 +304,54 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetTxFifoThreshold(&huart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_SetRxFifoThreshold(&huart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_UARTEx_DisableFifoMode(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -282,6 +365,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */

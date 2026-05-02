@@ -181,8 +181,7 @@ void DRV8323_DefaultConfig(DRV8323_Handle_t   *hdrv,
     /* ---- CSA_CTRL ---------------------------------------------------- */
     /*
      * CSA_GAIN = 20 V/V (0b10)
-     * If your board uses external shunt resistors, clear CSA_FET_BIT and (TODO: check with hardware)
-     * clear CSA_LS_REF_BIT.
+     * board uses external shunt resistors so clear CSA_FET_BIT
      */
     hdrv->reg_csa_ctrl =
         (1U << CSA_FET_BIT)                                           |
@@ -402,8 +401,7 @@ DRV8323_Result_t DRV8323_SetPhaseMode(DRV8323_Handle_t   *hdrv,
  *   400 ns — power modules, paralleled FETs
  *
  * Note: In 6-PWM mode the STM32 timer complementary output dead-time AND
- * this hardware dead-time both apply. Set only one to avoid excessive
- * effective dead time.
+ * this hardware dead-time both apply. Set only one
  */
 DRV8323_Result_t DRV8323_SetDeadTime(DRV8323_Handle_t  *hdrv,
                                        DRV8323_DeadTime_t dt)
@@ -442,7 +440,7 @@ void Motor_InitAll(void)
       g_motor[0].cs_port     = GPIOA;  
       g_motor[0].cs_pin     = GPIO_PIN_4;
 
-    // Not sure about enable and fault signals. In SPI reasearch I did there was only CS, clk, mosi, and miso
+    // Not sure about enable and fault signals. In SPI research I did there was only CS, clk, mosi, and miso
     // https://www.analog.com/en/resources/analog-dialogue/articles/introduction-to-spi-interface.html
     // https://controllerstech.com/how-to-use-spi-with-stm32/ 
       //g_motor[0].en_port     = GPIOB;  
