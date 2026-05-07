@@ -1,4 +1,4 @@
-#include "hall_sensor.h" //TODO: make later also need to define a lot of the variables
+#include "hall_sensor.h" //make later also need to define a lot of the variables
 #include "stm32g4xx_hal.h"
 
 /**
@@ -6,6 +6,19 @@
  * @brief   file to process hall sensor data from motor and send to phases OR driver
  * 				- send to driver if in 1x mode OR to phases.c to process to be sent to driver
  * 				- more info on page 31 of DRV8323S data sheet or in SPI_driver.c about driver modes
+ *
+ * Usage — quick-start for motor w/ SPI:
+ *
+ *   DRV8323_Handle_t motor;
+ *
+ *   // Motor — 6-PWM mode
+ *   motor.hspi       = &hspi;
+ *   motor.cs_port    = GPIOA;  motor.cs_pin    = GPIO_PIN_4;
+ *   motor.en_port    = GPIOB;  motor.en_pin    = GPIO_PIN_0;
+ *   motor.nfault_port= GPIOB;  motor.nfault_pin= GPIO_PIN_1;
+ *   motor.motor_id   = 1;
+ *   DRV8323_DefaultConfig(&motor, DRV8323_MODE_6PWM, DRV8323_DT_100NS);
+ *   DRV8323_Init(&motor);
  */
 
 #define HALL_TIMEOUT_MS 100

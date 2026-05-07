@@ -172,3 +172,10 @@ arm-none-eabi-size  pwm_try_pls.elf
   10808	     12	   1644	  12464	   30b0	pwm_try_pls.elf
 Finished building: default.size.stdout
  
+18:39:16 **** Build of configuration Debug for project ledBlink ****
+make -j12 all 
+arm-none-eabi-size  ledBlink.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5776	     12	   1572	   7360	   1cc0	ledBlink.elf
+Finished building: default.size.stdout
+ 

@@ -1,12 +1,5 @@
-#include "hall_sensor.h" //TODO: make later also need to define a lot of the variables
+#include "hall_sensor.h" //make later also need to define a lot of the variables
 #include "stm32g4xx_hal.h"
-
-/**
- * @file    hall_sensor.c
- * @brief   file to process hall sensor data from motor and send to phases OR driver
- * 				- send to driver if in 1x mode OR to phases.c to process to be sent to driver
- * 				- more info on page 31 of DRV8323S data sheet or in SPI_driver.c about driver modes
- */
 
 #define HALL_TIMEOUT_MS 100
 

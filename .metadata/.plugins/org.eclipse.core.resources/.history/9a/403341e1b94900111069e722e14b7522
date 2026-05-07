@@ -1,10 +1,8 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : phases.c
-  * @brief          : this file contains function that handle the 6x mode of the driver (drives the 3 phase, 6 step motor
-  * 						behavior manually
-  * 						- if you're using 3x mode you can just send high signals and not configure deadtime
-  * 						- more info on page 31 of DRV8323S data sheet or in SPI_driver.c about driver modes
+  * @file           : main.c
+  * @brief          : Main program body
   ******************************************************************************
   * @attention
   *
@@ -21,12 +19,18 @@
 #include "main.h"
 #include "phases.h"
 
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
 
 /**
-  * @brief: this function initializes the PWM for the 3 high signals and then the 3 inverse PWM for the low signals
-  *  - inverse PWM is used on the low side mosfets to prevent current shootthrough in the half bridge. Deadtime is also
-  *  			used to prevent the upper and lower mosfets from being open at the same time
-  *  -TODO: configure deadtime and inverse pwm in ioc file
+  * @brief  The application entry point.
+  * @retval int
   */
 void phases_start()
 {
@@ -43,7 +47,7 @@ void phases_start()
     7  // invalid (111)
 	 */
 
-  //don't delete --------------------------------------------------------------------- (test board pin setup)
+  //don't delete ---------------------------------------------------------------------
   /*
   HAL_GPIO_WritePin(GPIOA, A_Low_Pin, GPIO_PIN_SET); // CN10 - 11 (6 down on right side of left)
   HAL_GPIO_WritePin(GPIOA, B_Low_Pin, GPIO_PIN_SET); // CN10 - 15
@@ -70,21 +74,11 @@ void phases_start()
     sBDT.OffStateRunMode = TIM_OSSR_ENABLE;
     sBDT.OffStateIDLEMode = TIM_OSSI_ENABLE;
     sBDT.AutomaticOutput = TIM_AUTOMATICOUTPUT_ENABLE;
-    //TODO: define these values
 
     HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBDT);
 
 }
 
-/**
-  * @brief: this function take in the current step from the hall sensor (in a 3 bit format) and bases the next motor position
-  * 				on the current hall sensor reading. currently set up for 6x mode but may be able to simplify more
-  * 				since I think theoretically some of this should be configured on the STM
-  *
-  * 				More info about the bldc phases can be found here:
-  * 							-https://media.monolithicpower.com/document/Brushless_DC_Motor_Fundamentals.pdf
-  * 							-(I like page 13, 16, and 17)
-  */
 void Phases_Hall(uint8_t step){
 
       switch(step){

@@ -1,10 +1,5 @@
-/**
- * @file    PID_draft.c
- * @brief   draft for PID system needed for the motor
- * 			- takes in sensor data and compares them to expected motor state to correct errors
- */
 //used http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/ as reference
-
+//imports and stuff
 
 //system assumes consistent intervals (discrete-time PID) TODO: (((will need to change this!!!)
 
@@ -19,63 +14,40 @@ int lastError = 0;
 int maxOut;
 int minOut;
 
-/**
- * @brief   resets PID
- */
+
 void ClearPIDProgress() {
     integral = 0;
     lastError = 0;
 }
 
-/**
- * @brief   disables PID
- */
 void DisablePID() {
     enabledPID = 0;
 }
 
-/**
- * @brief   enabled PID (will need to do on startup)
- */
 void EnablePID() {
     enabledPID = 1;
 }
 
-/**
- * @brief   returns PID state
- */
 uint8_t PIDIsEnabled() {
     return(enabledPID);
 }
 
-/**
- * @brief   sets position
- */
 void setPosition(){
-//using PID to set position... will need to figure out encoder shit to expand on this
+//using PID set position... unsure on where position data is coming from so leave blank for now
 
 }
 
-/**
- * @brief   configure kP kI and kD
- */
 void setK_Values(int32_t kP, int32_t kI, int32_t kD){
 	kPosition = kP;
 	kIntegral = kI;
 	kDerivative = kD;
 }
 
-/**
- * @brief   set max and min values
- */
 void setMaxMin(int32_t max, int32_t min){
 	maxOut = max;
 	minOut = min;
 }
 
-/**
- * @brief   resets PID
- */
 int32_t PID(int32_t target){
     if(!PIDIsEnabled()){
         return(0);

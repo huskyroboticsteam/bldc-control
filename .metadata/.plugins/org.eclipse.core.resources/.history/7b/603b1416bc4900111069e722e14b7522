@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file           : phases.c
-  * @brief          : this file contains function that handle the 6x mode of the driver (drives the 3 phase, 6 step motor
+  * @brief          : this file contains fucntion that handle the 6x mode of the driver (drives the 3 phase, 6 step motor
   * 						behavior manually
   * 						- if you're using 3x mode you can just send high signals and not configure deadtime
   * 						- more info on page 31 of DRV8323S data sheet or in SPI_driver.c about driver modes
