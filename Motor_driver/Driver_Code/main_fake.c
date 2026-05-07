@@ -134,7 +134,7 @@ int main(void)
 
 			case 'b':
 				while(){
-					Phases_Hall()
+					Phases_Hall();
 				}
 				break;
 

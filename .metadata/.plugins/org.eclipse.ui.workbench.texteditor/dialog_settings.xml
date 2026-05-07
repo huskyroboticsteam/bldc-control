@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="hasShownOverlayPopupBefore" value="true"/>
-	<item key="replaceBarOpen" value="false"/>
+	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="g_motor"/>
+		<item value="shunt"/>
 		<item value="deadtime"/>
 		<item value="error"/>
 		<item value="uuid"/>
 		<item value="command"/>
 		<item value="ODrive_LastDirectReadRequester"/>
+	</list>
+	<list key="replacehistory">
+		<item value="driver_motor"/>
 	</list>
 </section>
