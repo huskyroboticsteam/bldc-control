@@ -115,6 +115,15 @@ int main(void)
    }
   /* USER CODE END 2 */
 
+	phases_start();
+
+// Heartbeat
+uint32_t heartbeatCounter;
+volatile CANPacket_t heartbeatPacket;
+
+CANPacket_t rxPacket;
+CANPacket_t txPacket;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -128,22 +137,26 @@ int main(void)
 		switch (rxByte)
 		{
 			case 'a':
+				/*
 				// Test case A (e.g. turn on user LED)
 				TIM2->CCR1 = 1023;
+				*/
+				CANPacket_t rxPacket;
 				break;
 
 			case 'b':
 				while(){
+					// get hall reading
 					Phases_Hall();
 				}
 				break;
-
+/*
 			case 'c':
 				// Test Case C (e.g. send PWM duty cycle command to target CAN device)
 				txPacket = CANPeripheralPacket_SetPWMDutyCycle(thisCANDevice, targetCANDevice, 0x01, 50.0);
 				CANSend(CANHandle, &txPacket);
 				break;
-
+*/
 			// Add other cases for device specific testing
 			default:
 				// All other characters
@@ -152,6 +165,10 @@ int main(void)
 	}
 	/* USER CODE BEGIN 3 */
   }
+
+	if(CANPollAndReceive(CANHandle, &rxPacket)){
+		ProcessCAN(&rxPacket, &txPacket);
+	}
   /* USER CODE END 3 */
 }
 
