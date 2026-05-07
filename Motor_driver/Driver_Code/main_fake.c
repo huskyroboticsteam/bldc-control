@@ -102,8 +102,8 @@ int main(void)
 
   DRV8323_Handle_t driver_motor;
 
-   void Motor_InitAll(void)
-   {
+   
+   
         // --- 6-PWM for FOC, 100 ns dead-time ---
         driver_motor.hspi        = &hspi1;
         driver_motor.cs_port     = GPIOA;  driver_motor.cs_pin     = GPIO_PIN_4;
@@ -112,7 +112,7 @@ int main(void)
         driver_motor.motor_id    = 0;
         DRV8323_DefaultConfig(&driver_motor, DRV8323_MODE_6PWM, DRV8323_DT_100NS);
         DRV8323_Init(&driver_motor);
-   }
+   
   /* USER CODE END 2 */
 
 	phases_start();
@@ -136,27 +136,21 @@ CANPacket_t txPacket;
 	{
 		switch (rxByte)
 		{
+			// call Phases_Hall with hall sensor readings from motor
 			case 'a':
-				/*
-				// Test case A (e.g. turn on user LED)
-				TIM2->CCR1 = 1023;
-				*/
-				CANPacket_t rxPacket;
-				break;
-
-			case 'b':
 				while(){
-					// get hall reading
-					Phases_Hall();
+					uint8_t hall = Hall_ReadRawState();
+					Phases_Hall(hall);
 				}
 				break;
-/*
-			case 'c':
-				// Test Case C (e.g. send PWM duty cycle command to target CAN device)
-				txPacket = CANPeripheralPacket_SetPWMDutyCycle(thisCANDevice, targetCANDevice, 0x01, 50.0);
-				CANSend(CANHandle, &txPacket);
+
+			// call Phases_Hall with fake hall sensor readings (iterates 1-6)
+			case 'b':
+				for(uint8_t i = 1; i <= 6; i++){
+					Phases_Hall(i);
+				}
 				break;
-*/
+
 			// Add other cases for device specific testing
 			default:
 				// All other characters
