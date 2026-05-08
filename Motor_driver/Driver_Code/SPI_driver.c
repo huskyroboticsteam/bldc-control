@@ -33,10 +33,6 @@ static inline void cs_deassert(DRV8323_Handle_t *hdrv)
     HAL_GPIO_WritePin(hdrv->cs_port, hdrv->cs_pin, GPIO_PIN_SET);
 }
 
-/* =========================================================================
- * Low-level SPI transfers
- * ========================================================================= */
-
 /**
  * @brief  Read a single 11-bit register value from the DRV8323.
  *
@@ -93,10 +89,6 @@ DRV8323_Result_t DRV8323_WriteReg(DRV8323_Handle_t *hdrv,
 
     return (ret == HAL_OK) ? DRV8323_OK : DRV8323_ERR_SPI;
 }
-
-/* =========================================================================
- * Configuration
- * ========================================================================= */
 
 /**
  * @brief  Build all five register shadows from safe, validated defaults.
@@ -195,10 +187,6 @@ void DRV8323_DefaultConfig(DRV8323_Handle_t   *hdrv,
         (0x3U << CSA_SEN_LVL_SHIFT);   /* 1.0 V OCS level            */
 }
 
-/* =========================================================================
- * Initialization
- * ========================================================================= */
-
 /**
  * @brief  Initialize one DRV8323 instance.
  *
@@ -265,10 +253,6 @@ DRV8323_Result_t DRV8323_Init(DRV8323_Handle_t *hdrv)
     return DRV8323_OK;
 }
 
-/* =========================================================================
- * Status / Fault Handling
- * ========================================================================= */
-
 /**
  * @brief  Read FAULT_STAT and VGS_STAT registers.
  *
@@ -327,10 +311,6 @@ DRV8323_Result_t DRV8323_ClearFaults(DRV8323_Handle_t *hdrv)
 
     return ret;
 }
-
-/* =========================================================================
- * Enable / Disable
- * ========================================================================= */
 
 void DRV8323_Enable(DRV8323_Handle_t *hdrv)
 {
@@ -417,10 +397,6 @@ DRV8323_Result_t DRV8323_SetDeadTime(DRV8323_Handle_t  *hdrv,
     return DRV8323_WriteReg(hdrv, DRV8323_REG_OCP_CTRL, hdrv->reg_ocp_ctrl);
 }
 
-/* =========================================================================
- * Fault Pin
- * ========================================================================= */
-
 /**
  * @brief  Sample nFAULT GPIO (active LOW).
  *
@@ -453,8 +429,8 @@ void Motor_InitAll(void)
 }
 
 /* =========================================================================
- * Example: application-level multi-motor setup (place in main.c or
- * a motor_controller.c file — shown here as reference only).
+ * Example: application-level multi-motor setup
+ * shown here as reference only
  *
  * #ifdef EXAMPLE_USAGE
  *

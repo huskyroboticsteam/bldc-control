@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="6x"/>
+		<item value="3x"/>
 		<item value="g_motor"/>
 		<item value="shunt"/>
 		<item value="deadtime"/>

@@ -17,8 +17,6 @@ extern "C" {
 
 int phases(void);
 
-#define ROTOR_STATE_COUNT   6
-
 #ifdef __cplusplus
 }
 #endif
