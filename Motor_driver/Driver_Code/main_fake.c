@@ -124,6 +124,8 @@ volatile CANPacket_t heartbeatPacket;
 CANPacket_t rxPacket;
 CANPacket_t txPacket;
 
+uint8_t MSG[35] = {'\0'};
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -138,7 +140,7 @@ CANPacket_t txPacket;
 		{
 			// call Phases_Hall with hall sensor readings from motor
 			case 'a':
-				while(){
+				while(1){
 					uint8_t hall = Hall_ReadRawState();
 					Phases_Hall(hall);
 				}
@@ -149,6 +151,11 @@ CANPacket_t txPacket;
 				for(uint8_t i = 1; i <= 6; i++){
 					Phases_Hall(i);
 				}
+				break;
+			case 'c':
+				uint8_t hall_reading = Hall_ReadRawState();
+				sprintf(MSG, "Hall Reading = %d\r\n", X);
+     			HAL_UART_Transmit(&hlpuart1, MSG, sizeof(MSG), 100);
 				break;
 
 			// Add other cases for device specific testing
