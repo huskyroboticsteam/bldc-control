@@ -126,6 +126,8 @@ CANPacket_t txPacket;
 
 uint8_t MSG[35] = {'\0'};
 
+EnablePID()
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -133,6 +135,9 @@ uint8_t MSG[35] = {'\0'};
 	/* USER CODE END WHILE */
 	uint8_t rxByte = 0;
 	uint8_t last_hall_reading = 0;
+	uint32_t lastEdgeTime = 0;
+	// need to change speed value
+	uint32_t target_speed = 5;
 
 	if (HAL_UART_Receive(&hlpuart1, &rxByte, 1, 10) == HAL_OK) // 1 is the size of the data (1 char), 10 is the time to wait for response in ms
 	{
@@ -142,13 +147,18 @@ uint8_t MSG[35] = {'\0'};
 			case 'a':
 				while(1){
 					uint8_t hall = Hall_ReadRawState();
-					if(last_hall_reading != 0 && last_hall_reading != hall){
+					if(last_hall_reading != 0 && hall != last_hall_reading){
 						Hall_EdgeCallback();
 					}
 					last_hall_reading = hall;
-					int32_t speed = Hall_GetSpeed();
-					// add PID stuff
+					uint32_t delta = 0;
+					if(lastEdgeTime != 0){
+						delta = HAL_GetTick() - lastEdgeTime;
+					}
+					uint32_t dutyCycle = PID(target_speed, delta);
+					Set_Duty_Cycle(dutyCycle);
 					Phases_Hall(hall);
+					// include delay maybe?
 				}
 				break;
 
@@ -162,6 +172,12 @@ uint8_t MSG[35] = {'\0'};
 				uint8_t hall_reading = Hall_ReadRawState();
 				sprintf(MSG, "Hall Reading = %d\r\n", X);
      			HAL_UART_Transmit(&hlpuart1, MSG, sizeof(MSG), 100);
+				break;
+			case 'd':
+				speed = speed + 1;
+				break;
+			case 'e':
+				speed = speed - 1;
 				break;
 
 			// Add other cases for device specific testing
