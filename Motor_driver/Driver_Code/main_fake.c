@@ -132,7 +132,7 @@ uint8_t MSG[35] = {'\0'};
   {
 	/* USER CODE END WHILE */
 	uint8_t rxByte = 0;
-
+	uint8_t last_hall_reading = 0;
 
 	if (HAL_UART_Receive(&hlpuart1, &rxByte, 1, 10) == HAL_OK) // 1 is the size of the data (1 char), 10 is the time to wait for response in ms
 	{
@@ -142,6 +142,12 @@ uint8_t MSG[35] = {'\0'};
 			case 'a':
 				while(1){
 					uint8_t hall = Hall_ReadRawState();
+					if(last_hall_reading != 0 && last_hall_reading != hall){
+						Hall_EdgeCallback();
+					}
+					last_hall_reading = hall;
+					int32_t speed = Hall_GetSpeed();
+					// add PID stuff
 					Phases_Hall(hall);
 				}
 				break;
