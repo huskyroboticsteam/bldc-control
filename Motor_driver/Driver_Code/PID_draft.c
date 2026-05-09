@@ -19,6 +19,7 @@ int lastError = 0;
 int maxOut;
 int minOut;
 
+
 /**
  * @brief   resets PID
  */
@@ -76,7 +77,7 @@ void setMaxMin(int32_t max, int32_t min){
 /**
  * @brief   resets PID
  */
-int32_t PID(int32_t target){
+int32_t PID(int32_t target, uint32_t dt){
     if(!PIDIsEnabled()){
         return(0);
     }
@@ -84,7 +85,7 @@ int32_t PID(int32_t target){
     int current = Hall_GetSpeed(); //from hall sensor/wtv get some sort of data
     int error = target - current;
 
-    integral = integral + error;
+    integral = integral + (error*dt);
 
     if(integral > outMax){
     	integral = outMax;
@@ -92,7 +93,7 @@ int32_t PID(int32_t target){
     	integral = outMin;
     }
 
-    int derivative = error - lastError;
+    int derivative = (error - lastError)/dt;
 
     int PWMOut = error*kPosition/10 + integral*kIntegral/10 + derivative*kDerivative/10;
 
