@@ -21,7 +21,7 @@
 #include "main.h"
 #include "phases.h"
 
-
+int32_t dutyCycle = 21250;
 /**
   * @brief: this function initializes the PWM for the 3 high signals and then the 3 inverse PWM for the low signals
   *  - inverse PWM is used on the low side mosfets to prevent current shootthrough in the half bridge. Deadtime is also
@@ -74,6 +74,10 @@ void phases_start()
 
     HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBDT);
 
+}
+
+void Set_Duty_Cycle(uint32_t new_value){
+	dutyCycle = new_value;
 }
 
 /**
