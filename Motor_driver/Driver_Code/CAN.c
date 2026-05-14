@@ -67,7 +67,7 @@ int ProcessCAN(CANPacket_t* receivedPacket, CANPacket_t* packetToSend) {
             }
 
 
-        default: //recieved Packet with non-valid ID
+        default: //received Packet with non-valid ID
             //return ERROR_INVALID_PACKET;
     }
 

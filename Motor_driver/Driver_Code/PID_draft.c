@@ -9,6 +9,8 @@
 //system assumes consistent intervals (discrete-time PID) TODO: (((will need to change this!!!)
 
 //all motors will be using speed control (using hall sensor) but some will do speed and position using encoder
+#include <stdint.h>
+
 int kPosition = 0, kIntegral = 0, kDerivative = 0;
 
 int maxSpeed = 32768; //taken from last year
@@ -18,6 +20,8 @@ int lastError = 0;
 
 int maxOut;
 int minOut;
+
+int enabledPID = 0;
 
 
 /**

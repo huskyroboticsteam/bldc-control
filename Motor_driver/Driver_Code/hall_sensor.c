@@ -1,5 +1,5 @@
-#include "hall_sensor.h" //TODO: make later also need to define a lot of the variables
-#include "stm32g4xx_hal.h"
+//TODO: make later also need to define a lot of the variables
+#include "hall_sensor.h"
 
 /**
  * @file    hall_sensor.c
@@ -8,7 +8,6 @@
  * 				- more info on page 31 of DRV8323S data sheet or in SPI_driver.c about driver modes
  */
 
-#define HALL_TIMEOUT_MS 100
 
 //6 steps for 3 phases
 static const uint8_t hallToStep[8] =
