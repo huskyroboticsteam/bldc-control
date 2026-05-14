@@ -28,7 +28,7 @@ int32_t dutyCycle = 21250;
   *  			used to prevent the upper and lower mosfets from being open at the same time
   *  -TODO: configure deadtime and inverse pwm in ioc file
   */
-void phases_start()
+void phases_start(void)
 {
 
 	//this si different for like every motor so will need to figure out phase order... we assumed the following
@@ -134,7 +134,7 @@ void Phases_Hall(uint8_t step){
 //		This send an inverse PWM signal to the lower mosfet (so if we had duty cycle of 70%
 //		it would send 30% to lower mosfet). This needs to be configured in STM IDE, example here:
 
-
+// A High _ B Low
 void AH_BL() {
     HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_3); //Disable PWM CH 3.
     HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
@@ -144,6 +144,7 @@ void AH_BL() {
     HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
 }
 
+// A High _ C Low
 void AH_CL() {
     HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2); //Disable PWM CH 2.
     HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);

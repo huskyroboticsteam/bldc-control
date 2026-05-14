@@ -17,7 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "main_fake.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -126,7 +126,7 @@ CANPacket_t txPacket;
 
 uint8_t MSG[35] = {'\0'};
 
-EnablePID()
+EnablePID();
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
