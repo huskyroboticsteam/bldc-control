@@ -5660,3 +5660,18 @@ java.io.IOException: Cannot run program "gcc": Launching failed
 
 !ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-05-13 18:56:54.379
 !MESSAGE port: 
+
+!ENTRY org.eclipse.core.resources 2 2 2026-05-14 17:55:35.660
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-14 17:55:35.661
+!MESSAGE The project description file (.project) for 'Camera_motor' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-14 17:55:35.661
+!MESSAGE The project description file (.project) for 'Motor_driver' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-14 17:55:35.661
+!MESSAGE The project description file (.project) for 'pwm_try_pls' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-14 18:00:59.528
+!MESSAGE Indexed 'huskyrobotics-fw-template' (26 sources, 140 headers) in 5.28 sec: 15,335 declarations; 84,230 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.17%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-14 19:17:04.363
+!MESSAGE Indexed 'bldc_motor_controller' (25 sources, 151 headers) in 9.89 sec: 17,282 declarations; 85,839 references; 7 unresolved inclusions; 78 syntax errors; 1,660 unresolved names (1.6%)
