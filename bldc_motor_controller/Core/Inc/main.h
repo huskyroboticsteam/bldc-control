@@ -59,6 +59,24 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Temp_Pin_Pin GPIO_PIN_11
+#define Temp_Pin_GPIO_Port GPIOB
+#define Voltage_Pin_Pin GPIO_PIN_12
+#define Voltage_Pin_GPIO_Port GPIOB
+#define Hall_A_Pin GPIO_PIN_13
+#define Hall_A_GPIO_Port GPIOB
+#define Hall_B_Pin GPIO_PIN_14
+#define Hall_B_GPIO_Port GPIOB
+#define Hall_C_Pin GPIO_PIN_15
+#define Hall_C_GPIO_Port GPIOB
+#define fault_pin_Pin GPIO_PIN_6
+#define fault_pin_GPIO_Port GPIOC
+#define enable_pin_Pin GPIO_PIN_7
+#define enable_pin_GPIO_Port GPIOC
+#define clk_select_Pin GPIO_PIN_8
+#define clk_select_GPIO_Port GPIOC
+#define CAL_Pin GPIO_PIN_10
+#define CAL_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

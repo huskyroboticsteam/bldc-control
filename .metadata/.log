@@ -6838,3 +6838,15 @@ COM11
 
 !ENTRY com.st.stm32cube.ide.mpu.remote.serial 1 1 2026-05-19 19:05:58.218
 !MESSAGE port: 
+
+!ENTRY org.eclipse.core.resources 2 2 2026-05-20 19:32:46.513
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-20 19:32:46.529
+!MESSAGE The project description file (.project) for 'Camera_motor' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-20 19:32:46.529
+!MESSAGE The project description file (.project) for 'Motor_driver' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2026-05-20 19:32:46.529
+!MESSAGE The project description file (.project) for 'pwm_try_pls' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-05-20 20:19:42.242
+!MESSAGE Indexed 'bldc_motor_controller' (29 sources, 125 headers) in 22.4 sec: 16,042 declarations; 102,533 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.14%)
