@@ -1,36 +1,4 @@
-18:23:02 **** Incremental Build of configuration Debug for project CAN_Test2 ****
-make -j12 all 
-arm-none-eabi-gcc "../Libraries/CAN26/Ports/PortSTM32g4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libraries/CAN26/Ports/PortSTM32g4xx.d" -MT"Libraries/CAN26/Ports/PortSTM32g4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Libraries/CAN26/Ports/PortSTM32g4xx.o"
-arm-none-eabi-gcc "../Libraries/CAN26/CANPacket.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Libraries/CAN26/CANPacket.d" -MT"Libraries/CAN26/CANPacket.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Libraries/CAN26/CANPacket.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32g4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_hal_msp.d" -MT"Core/Src/stm32g4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32g4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32g4xx_it.d" -MT"Core/Src/stm32g4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32g4xx_it.o"
-arm-none-eabi-gcc -o "CAN_Test2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\can-test\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Test2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: CAN_Test2.elf
- 
-arm-none-eabi-size  CAN_Test2.elf 
-arm-none-eabi-objdump -h -S CAN_Test2.elf  > "CAN_Test2.list"
-   text	   data	    bss	    dec	    hex	filename
-  13984	     24	   1864	  15872	   3e00	CAN_Test2.elf
-Finished building: default.size.stdout
- 
-Finished building: CAN_Test2.list
- 
-18:25:50 **** Incremental Build of configuration Debug for project ledBlink ****
-make -j12 all 
-arm-none-eabi-size  ledBlink.elf 
-   text	   data	    bss	    dec	    hex	filename
-   5852	     12	   1572	   7436	   1d0c	ledBlink.elf
-Finished building: default.size.stdout
- 
-18:26:31 **** Incremental Build of configuration Debug for project ledBlink ****
-make -j12 all 
-arm-none-eabi-size  ledBlink.elf 
-   text	   data	    bss	    dec	    hex	filename
-   5852	     12	   1572	   7436	   1d0c	ledBlink.elf
-Finished building: default.size.stdout
- 
-18:32:57 **** Incremental Build of configuration Debug for project CAN_Test2 ****
+18:10:34 **** Incremental Build of configuration Debug for project CAN_Test2 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "CAN_Test2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\can-test\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Test2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -39,12 +7,39 @@ Finished building target: CAN_Test2.elf
 arm-none-eabi-size  CAN_Test2.elf 
 arm-none-eabi-objdump -h -S CAN_Test2.elf  > "CAN_Test2.list"
    text	   data	    bss	    dec	    hex	filename
-  13972	     24	   1864	  15860	   3df4	CAN_Test2.elf
+  14084	     24	   1864	  15972	   3e64	CAN_Test2.elf
 Finished building: default.size.stdout
  
 Finished building: CAN_Test2.list
  
-19:00:34 **** Incremental Build of configuration Debug for project CAN_Test2 ****
+18:10:45 **** Incremental Build of configuration Debug for project telemetry_board ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG '-DCHIP_TYPE = CHIP_TYPE_STM32_G4XX' -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:228:66: warning: unused variable 'ResetPacket' [-Wunused-variable]
+  228 |                           CANPeripheralPacket_SetReset_Decoded_t ResetPacket = CANPeripheralPacket_SetReset_Decode(&rxPacket);
+      |                                                                  ^~~~~~~~~~~
+../Core/Src/main.c:221:79: warning: unused variable 'RoverLEDGreenFlashPacket' [-Wunused-variable]
+  221 |                           CANPeripheralPacket_SetRoverLEDGreenFlash_Decoded_t RoverLEDGreenFlashPacket = CANPeripheralPacket_SetRoverLEDGreenFlash_Decode(&rxPacket);
+      |                                                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:214:73: warning: unused variable 'RoverLEDBluePacket' [-Wunused-variable]
+  214 |                           CANPeripheralPacket_SetRoverLEDBlue_Decoded_t RoverLEDBluePacket = CANPeripheralPacket_SetRoverLEDBlue_Decode(&rxPacket);
+      |                                                                         ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:206:72: warning: unused variable 'RoverLEDRedPacket' [-Wunused-variable]
+  206 |                           CANPeripheralPacket_SetRoverLEDRed_Decoded_t RoverLEDRedPacket = CANPeripheralPacket_SetRoverLEDRed_Decode(&rxPacket);
+      |                                                                        ^~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "telemetry_board.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\telemetry_board_new\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="telemetry_board.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: telemetry_board.elf
+ 
+arm-none-eabi-size  telemetry_board.elf 
+arm-none-eabi-objdump -h -S telemetry_board.elf  > "telemetry_board.list"
+   text	   data	    bss	    dec	    hex	filename
+  17596	     32	   1776	  19404	   4bcc	telemetry_board.elf
+Finished building: default.size.stdout
+ 
+Finished building: telemetry_board.list
+ 
+18:11:48 **** Incremental Build of configuration Debug for project CAN_Test2 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "CAN_Test2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\can-test\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Test2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -53,8 +48,36 @@ Finished building target: CAN_Test2.elf
 arm-none-eabi-size  CAN_Test2.elf 
 arm-none-eabi-objdump -h -S CAN_Test2.elf  > "CAN_Test2.list"
    text	   data	    bss	    dec	    hex	filename
-  13976	     24	   1864	  15864	   3df8	CAN_Test2.elf
+  14296	     24	   1872	  16192	   3f40	CAN_Test2.elf
 Finished building: default.size.stdout
  
 Finished building: CAN_Test2.list
+ 
+18:12:53 **** Incremental Build of configuration Debug for project CAN_Test2 ****
+make -j12 all 
+arm-none-eabi-size  CAN_Test2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14296	     24	   1872	  16192	   3f40	CAN_Test2.elf
+Finished building: default.size.stdout
+ 
+18:13:45 **** Incremental Build of configuration Debug for project CAN_Test2 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx '-DCHIP_TYPE = CHIP_TYPE_STM32G474xx' -c -I"C:/Users/becca/Documents/GitHub/can-test/Libraries/CAN26" -I../Core/Inc -I../Libraries/CAN26 -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/becca/Documents/GitHub/can-test/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CAN_Test2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\becca\Documents\GitHub\can-test\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN_Test2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CAN_Test2.elf
+ 
+arm-none-eabi-size  CAN_Test2.elf 
+arm-none-eabi-objdump -h -S CAN_Test2.elf  > "CAN_Test2.list"
+   text	   data	    bss	    dec	    hex	filename
+  14084	     24	   1864	  15972	   3e64	CAN_Test2.elf
+Finished building: default.size.stdout
+ 
+Finished building: CAN_Test2.list
+ 
+18:16:50 **** Incremental Build of configuration Debug for project CAN_Test2 ****
+make -j12 all 
+arm-none-eabi-size  CAN_Test2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14084	     24	   1864	  15972	   3e64	CAN_Test2.elf
+Finished building: default.size.stdout
  

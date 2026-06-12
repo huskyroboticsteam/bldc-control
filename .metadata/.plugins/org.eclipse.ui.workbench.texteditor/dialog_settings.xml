@@ -3,15 +3,21 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="GPIOB"/>
+		<item value="BRAKE_ELBOW"/>
+		<item value="BRAKE_BASE"/>
+		<item value="BRAKE_ BASE"/>
+		<item value="MX_GPIO_Init"/>
+		<item value="init"/>
+		<item value="hal"/>
+		<item value="heart"/>
+		<item value="laser"/>
 		<item value="6x"/>
 		<item value="3x"/>
 		<item value="g_motor"/>
 		<item value="shunt"/>
 		<item value="deadtime"/>
 		<item value="error"/>
-		<item value="uuid"/>
-		<item value="command"/>
-		<item value="ODrive_LastDirectReadRequester"/>
 	</list>
 	<list key="replacehistory">
 		<item value="driver_motor"/>
