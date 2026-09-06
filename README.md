@@ -1,5 +1,5 @@
 # BLDC Board
-((code is currently in First-Draft -> Motor Driver -> Driver Code and needs to be moved))
+## ((code is currently in First-Draft -> Motor Driver -> Driver Code and needs to be moved))
 ## BLDC Motor Overview
 
 A brushless DC (BLDC) motor consists of a permanent magnet in the center that rotates and coils that surround the permanent magnet. In order
