@@ -3,6 +3,11 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="bor"/>
+		<item value="BOR_LEV"/>
+		<item value="DebugLED_off_time"/>
+		<item value="CANLED_off_time"/>
+		<item value="error"/>
 		<item value="GPIOB"/>
 		<item value="BRAKE_ELBOW"/>
 		<item value="BRAKE_BASE"/>
@@ -13,11 +18,6 @@
 		<item value="heart"/>
 		<item value="laser"/>
 		<item value="6x"/>
-		<item value="3x"/>
-		<item value="g_motor"/>
-		<item value="shunt"/>
-		<item value="deadtime"/>
-		<item value="error"/>
 	</list>
 	<list key="replacehistory">
 		<item value="driver_motor"/>
